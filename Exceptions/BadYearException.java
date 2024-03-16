@@ -1,5 +1,7 @@
-package Exceptions;
+package exceptions;
 
-public class BadYearException {
+public class BadYearException extends SemanticException{
+
+
     
 }

@@ -1,8 +1,6 @@
-package Driver;
+package driver;
 
-import Exceptions.*;
-import inputFiles.*;
-import Movie.*;
+
 
 import java.util.Scanner;
 
