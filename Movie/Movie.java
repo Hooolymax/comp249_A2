@@ -28,18 +28,36 @@ public class Movie implements Serializable {
         this.actor3 = "n/a";
     }
 
-    public Movie(int year, String title, Double duration, String genres, int rating, int score, String director,
-            String actor1, String actor2, String actor3) {
-        this.year = year;
-        this.title = title;
-        this.duration = duration;
-        this.genres = genres;
-        this.rating = rating;
-        this.score = score;
-        this.director = director;
-        this.actor1 = actor1;
-        this.actor2 = actor2;
-        this.actor3 = actor3;
+    public Movie(String[] movieRecordFields) {
+        
+        
+        // alisa
+        // this.year = movieRecordFields[0]; parseInt
+        this.title = movieRecordFields[1];
+
+        // max
+        this.duration = movieRecordFields[2];
+
+        // alisa
+        this.genres = movieRecordFields[3];
+
+        // max
+        this.rating = movieRecordFields[4];
+
+        // alisa
+        this.score = movieRecordFields[5];
+
+        // max 
+        this.director = movieRecordFields[6];
+
+        // alisa
+        this.actor1 = movieRecordFields[7];
+
+        // max
+        this.actor2 = movieRecordFields[8]; 
+
+        // max
+        this.actor3 = movieRecordFields[9];
     }
 
     public Movie(Movie aMovie) {

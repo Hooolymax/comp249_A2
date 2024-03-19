@@ -1,5 +1,5 @@
 package exceptions;
 
-public class ExcessFieldsException {
+public class ExcessFieldsException extends SyntaxException{
     
 }

@@ -2,6 +2,6 @@
 
 package exceptions;
 
-public abstract class SemanticException extends BadMovieRecordException{
+public abstract class SemanticException extends Exception{
     
 }

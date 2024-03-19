@@ -1,5 +1,5 @@
 package exceptions;
 
-public class MissingFieldsException {
+public class MissingFieldsException extends SyntaxException{
     
 }
