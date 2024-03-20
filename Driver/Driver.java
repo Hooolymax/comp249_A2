@@ -23,8 +23,24 @@ public class Driver {
 
     public static void main(String[] args) {
 
+
+        // Directory to CSV files (replace with your path when run)
+        String directoryPath = "C:\\Users\\volit\\OneDrive\\Documents\\GitHub\\comp249_A2\\inputFiles"; 
+        // Path to the manifest 
+        String manifestFilePath = directoryPath+"\\part1_manifest.txt"; 
+        
+
+        //read the csv files and create the Manifest File
+        createManifestFile(directoryPath, manifestFilePath);
+
+
+
+
+
+
+
         // part 1’s manifest file
-        String part1_manifest = "part1_manifest.txt";
+        String part1_manifest = manifestFilePath;
 
         // part 2’s manifest file
         String part2_manifest = do_part1(part1_manifest /* , ... */); // partition
@@ -36,6 +52,7 @@ public class Driver {
         // and navigate
 
 
+        
 
 
 
@@ -48,11 +65,12 @@ public class Driver {
 
 
 
-        String directoryPath = "C:\\Users\\volit\\OneDrive\\Documents\\GitHub\\comp249_A2\\inputFiles";  // Directory containing CSV files
-        String manifestFilePath = directoryPath+"\\part1_manifest.txt";  // Path to the manifest
 
 
-        createManifestFile(directoryPath, manifestFilePath);
+     
+
+
+        
 
 
 
@@ -63,7 +81,7 @@ return;
 
     }
 
-    public static String do_part1(String s) {
+    public static String do_part1(String manifestFilePath) {
 
         // max
         // read p1 manifest file line by line and handle the exception if it does not exist
@@ -81,12 +99,49 @@ return;
 
         // create manifest file
 
+        
+        File manifestFile = new File(manifestFilePath);
+        Scanner manifestScanner = null;
+        PrintWriter badMoviesWriter = null;
+
+
+        try{
+            manifestScanner=new Scanner(new FileInputStream(manifestFile));
+            badMoviesWriter=new PrintWriter(new FileOutputStream("bad_movie_records.txt", true));
+
+            while (manifestScanner.hasNextLine()){
+                String movieFileName = manifestScanner.nextLine().trim();
+
+                if (!movieFileName.isEmpty()) {
+                    
+                    Movie[] movies = partiateFile(movieFileName);
+                   
+                }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Manifest file not found: " + manifestFilePath);
+        } finally {
+            if (manifestScanner != null) {
+                manifestScanner.close();
+            }
+            if (badMoviesWriter != null) {
+                badMoviesWriter.close();
+            }
+        }
+    
+        return "part2_manifest.txt";  // returns name of part 2 manifest file
+
+        }
+
+
 
         
 
-        return ""; // returns name of part 2 manifest file
+       
 
-    }
+    
 
 
     /**
@@ -186,6 +241,25 @@ return;
 
 
     public static String do_part2(String s) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return "";
     }
 
