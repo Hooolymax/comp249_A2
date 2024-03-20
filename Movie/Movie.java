@@ -31,14 +31,24 @@ public class Movie implements Serializable {
         this.actor3 = "n/a";
     }
 
-    public Movie(String[] movieRecordFields) throws SemanticException {
+    public Movie(String[] movieRecordFields) throws SemanticException, MultipleSemanticExceptions {
         
-        // will stop on the first exception, need to do all
+        SemanticException[] exceptions = new SemanticException[10];
+        int exceptionCount = 0;
 
-        this.year = validateYear(movieRecordFields[0]);
 
+        try{
+            this.year = validateYear(movieRecordFields[0]);
+        }  catch (BadYearException e) {
+            exceptions[exceptionCount++] = e;
+        }
 
-        this.title = validateTitle(movieRecordFields[1]);
+        try{
+            this.title = validateTitle(movieRecordFields[1]);
+        }  catch (BadTitleException e) {
+            exceptions[exceptionCount++] = e;
+        }
+        
 
         // max
         this.duration = movieRecordFields[2];
@@ -50,7 +60,12 @@ public class Movie implements Serializable {
         this.rating = movieRecordFields[4];
 
         // alisa
-        this.score = validateScore(movieRecordFields[5]);
+        try{
+            this.score = validateScore(movieRecordFields[5]);
+        }  catch (BadScoreException e) {
+            exceptions[exceptionCount++] = e;
+        }
+        
 
         // max 
         this.director = movieRecordFields[6];
@@ -63,6 +78,15 @@ public class Movie implements Serializable {
 
         // max
         this.actor3 = movieRecordFields[9];
+
+        // there were exceptions
+        if (exceptionCount > 0) {
+            if (exceptionCount == 1){
+                throw exceptions[0]; // 1 semantic exception
+            } else{
+                throw new MultipleSemanticExceptions(exceptions, exceptionCount); // many semantic exceptions
+            }
+        }
     }
 
     public Movie(Movie aMovie) {

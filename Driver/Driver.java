@@ -72,7 +72,7 @@ public class Driver {
         String line;
         Movie[] movieRecords = new Movie[MAXNUMMOVIEINFILE];
         int lineCount = 0;
-        int i = 0;
+        int movieCount = 0;
 
         Scanner inputStream = null;
         PrintWriter outputStream = null;
@@ -91,11 +91,13 @@ public class Driver {
                 line = inputStream.nextLine();
 
                 try{
-                    movieRecords[i] = createMovieRecord(line.split(" , "));
-                    i++; // executed only if no exceptions
+                    movieRecords[movieCount] = createMovieRecord(line.split(" , "));
+                    movieCount++; // executed only if no exceptions
 
                 } catch (SyntaxException e1){
                     outputStream.println("syntax error" + e1.getMessage() + line + fileName + lineCount);
+                } catch (MultipleSemanticExceptions es){
+                    outputStream.println("multiple semantic errors" + es.getMessages() + line + fileName + lineCount);
                 } catch (SemanticException e2){
                     outputStream.println("semantic error" + e2.getMessage() + line + fileName + lineCount);
                 }
@@ -124,7 +126,7 @@ public class Driver {
      * @throws SyntaxException - all types of syntax errors
      * @throws SemanticException - all types of semantic errors
      */
-    public static Movie createMovieRecord(String[] movieRecordFields) throws SyntaxException, SemanticException{
+    public static Movie createMovieRecord(String[] movieRecordFields) throws SyntaxException, MultipleSemanticExceptions{
         
         if (movieRecordFields.length > 10){
             throw new ExcessFieldsException();
@@ -148,7 +150,6 @@ public class Driver {
             }
         }
 
-        
         return new Movie(movieRecordFields);
 
     }
