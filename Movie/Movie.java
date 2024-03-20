@@ -1,6 +1,9 @@
 package movie;
 
 import java.io.Serializable;
+import java.util.Optional;
+
+import exceptions.*;
 
 public class Movie implements Serializable {
 
@@ -9,7 +12,7 @@ public class Movie implements Serializable {
     private Double duration;
     private String genres;
     private int rating;
-    private int score;
+    private double score;
     private String director;
     private String actor1;
     private String actor2;
@@ -28,30 +31,32 @@ public class Movie implements Serializable {
         this.actor3 = "n/a";
     }
 
-    public Movie(String[] movieRecordFields) {
+    public Movie(String[] movieRecordFields) throws SemanticException {
         
-        
-        // alisa
-        // this.year = movieRecordFields[0]; parseInt
-        this.title = movieRecordFields[1];
+        // will stop on the first exception, need to do all
+
+        this.year = validateYear(movieRecordFields[0]);
+
+
+        this.title = validateTitle(movieRecordFields[1]);
 
         // max
         this.duration = movieRecordFields[2];
 
-        // alisa
+        // max
         this.genres = movieRecordFields[3];
 
         // max
         this.rating = movieRecordFields[4];
 
         // alisa
-        this.score = movieRecordFields[5];
+        this.score = validateScore(movieRecordFields[5]);
 
         // max 
         this.director = movieRecordFields[6];
 
         // alisa
-        this.actor1 = movieRecordFields[7];
+        this.actor1 = validateActor(movieRecordFields[7]);
 
         // max
         this.actor2 = movieRecordFields[8]; 
@@ -71,6 +76,28 @@ public class Movie implements Serializable {
         this.actor1 = aMovie.actor1;
         this.actor2 = aMovie.actor2;
         this.actor3 = aMovie.actor3;
+    }
+
+    /**
+     * Checks if given String is an integer and converts it to integer
+     * @param str - String to be checked and converted
+     * @return string converted to int if integer, empty otherwise
+     */
+    public static Optional<Integer> toInteger(String str) {
+        try {
+            return Optional.of(Integer.parseInt(str));
+        } catch (NumberFormatException e) {
+            return Optional.empty();
+        }
+    }
+
+    public static boolean notInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true; // String is an integer
+        } catch (NumberFormatException e) {
+            return false; // String is not an integer
+        }
     }
 
     public int getYear() {
@@ -151,6 +178,81 @@ public class Movie implements Serializable {
 
     public void setActor3(String actor3) {
         this.actor3 = actor3;
+    }
+
+    /**
+     * Validates the movie year which must be between 1990 and 2024
+     * @param candidateYear
+     * @return valid year
+     * @throws BadYearException in case of missing year or invalid year
+     */
+    public static int validateYear(String candidateYear) throws BadYearException{
+
+        if (candidateYear.isEmpty()){
+            throw new BadYearException("missing year");
+        
+        } else {
+
+            try{
+                int year = Integer.parseInt(candidateYear);
+                if (year > 1990 && year <= 2024){
+                    return year;
+                } else {
+                    throw new BadYearException("invalid year");
+                }
+            } catch (NumberFormatException e) {
+                throw new BadYearException("invalid year");
+            }
+
+        }
+    }
+
+    /**
+     * Validates the movie title
+     * @param candidateTitle
+     * @return valid title
+     * @throws BadTitleException if the title is missing
+     */
+    public static String validateTitle(String candidateTitle) throws BadTitleException{
+        if (candidateTitle.isEmpty()){
+            throw new BadTitleException("missing title");
+        } else {
+            return candidateTitle;
+        }
+    }
+
+
+    /**
+     * Validates the movie score which must be positive
+     * @param candidateScore
+     * @return valid score
+     * @throws BadScoreException in case of missing score or invalid score
+     */
+    public static double validateScore(String candidateScore) throws BadScoreException{
+
+        if (candidateScore.isEmpty()){
+            throw new BadScoreException("missing score");
+        
+        } else {
+
+            try{
+                double score = Double.parseDouble(candidateScore);
+                if (score > 0){
+                    return score;
+                } else {
+                    throw new BadScoreException("invalid score");
+                }
+            } catch (NumberFormatException e) {
+                throw new BadScoreException("invalid score");
+            }
+
+        }
+    }
+
+
+    // max
+    public static String validateActor(String candidateActor){
+        return candidateActor;
     }
 
     

@@ -142,7 +142,7 @@ public class Driver {
                         count++;
                     }
                 }
-                if (count != 2){
+                if (count % 2 != 0){
                     throw new MissingQuotesException();
                 }
             }
