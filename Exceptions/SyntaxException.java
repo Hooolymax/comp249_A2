@@ -1,6 +1,6 @@
 //alisa
 
-package exceptions;
+package Exceptions;
 
 public abstract class SyntaxException extends Exception{
 

@@ -1,4 +1,4 @@
-package driver;
+package Driver;
 
 import java.util.Scanner;
 
@@ -7,8 +7,8 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import exceptions.*;
-import movie.Movie;
+import Exceptions.*;
+import Movie.Movie;
 
 
 public class Driver {
@@ -52,7 +52,7 @@ public class Driver {
         // create manifest file
 
 
-        partiateFile(fileName);
+        
 
         return ""; // returns name of part 2 manifest file
 
@@ -126,7 +126,7 @@ public class Driver {
      * @throws SyntaxException - all types of syntax errors
      * @throws SemanticException - all types of semantic errors
      */
-    public static Movie createMovieRecord(String[] movieRecordFields) throws SyntaxException, MultipleSemanticExceptions{
+    public static Movie createMovieRecord(String[] movieRecordFields) throws SyntaxException, SemanticException{
         
         if (movieRecordFields.length > 10){
             throw new ExcessFieldsException();

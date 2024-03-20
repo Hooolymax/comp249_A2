@@ -1,4 +1,4 @@
-package exceptions;
+package Exceptions;
 
 
 public abstract class SemanticException extends Exception{

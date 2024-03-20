@@ -1,9 +1,9 @@
-package movie;
+package Movie;
 
 import java.io.Serializable;
 import java.util.Optional;
 
-import exceptions.*;
+import Exceptions.*;
 
 public class Movie implements Serializable {
 

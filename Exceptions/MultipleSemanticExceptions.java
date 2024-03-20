@@ -1,4 +1,4 @@
-package exceptions;
+package Exceptions;
 
 /**
  * An exception that collects multiple {@link SemanticException} instances.
