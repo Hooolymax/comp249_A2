@@ -7,6 +7,11 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import Exceptions.*;
 import Movie.Movie;
 
@@ -29,7 +34,32 @@ public class Driver {
         do_part3(part3_manifest /* , ... */); // deserialize
 
         // and navigate
-        return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        String directoryPath = "C:\\Users\\volit\\OneDrive\\Documents\\GitHub\\comp249_A2\\inputFiles";  // Directory containing CSV files
+        String manifestFilePath = directoryPath+"\\part1_manifest.txt";  // Path to the manifest
+
+
+        createManifestFile(directoryPath, manifestFilePath);
+
+
+
+
+return;
+
+
 
     }
 
@@ -162,5 +192,36 @@ public class Driver {
     public static void do_part3(String s) {
         return;
     }
+
+
+
+
+    //Create the manifest File
+    
+        public static void createManifestFile(String directoryPath, String manifestFileName) {
+    
+            File dir = new File(directoryPath);
+            File[] files = dir.listFiles((dir1, name) -> name.endsWith(".csv"));
+    
+             try (FileWriter writer = new FileWriter(manifestFileName)) {
+                if(files!=null){
+                    for(File file:files){
+                        writer.write(file.getName()+"\n");
+    
+                    }
+    
+    
+    
+                }
+    
+    
+    
+    
+             }catch(IOException e){
+                System.out.println("Can't create manifest file");
+             }
+    
+
+}
 
 }
