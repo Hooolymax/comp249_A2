@@ -24,21 +24,22 @@ import movie.Movie;
 public class Driver {
 
     
-    final static int MAXNUMMOVIEINFILE = 1000;
+    final static int MAXNUMMOVIEINFILE = 200;
 
     // Directory to CSV files
-    static String directoryPath ="inputFiles"; 
+    static String inputdirectoryPath ="inputfiles"; 
+    static String outputdirectoryPath ="outputfiles"; 
 
     public static void main(String[] args) {
 
 
         
         // Path to the manifest 
-        String manifestFilePath = directoryPath+"\\part1_manifest.txt"; 
+        String manifestFilePath = inputdirectoryPath+"\\part1_manifest.txt"; 
         
 
         //read the csv files and create the Manifest File
-        createManifestFile(directoryPath, manifestFilePath);
+        createManifestFile(inputdirectoryPath, manifestFilePath);
 
 
 
@@ -74,15 +75,16 @@ public class Driver {
         
         File manifestFile = new File(manifestFilePath);
         Scanner manifestScanner = null;
-        //PrintWriter badMoviesClearFile = null;
+        PrintWriter movieWriter = null;
         
 
 
         try{
             manifestScanner=new Scanner(new FileInputStream(manifestFile));
             
+            
             // clear and create file
-            PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream("bad_movie_records.txt"));
+            PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream("outputfiles\\bad_movie_records.txt"));
             badMoviesClearFile.print("");
             badMoviesClearFile.close();
 
@@ -92,7 +94,21 @@ public class Driver {
 
                 if (!movieFileName.isEmpty()) {
                     
-                    Movie[] movies = partiateFile(movieFileName);
+                    Movie[] validMovies = partiateFile(movieFileName);
+
+                    for (int i = 0; i < validMovies.length; i++){
+                        if (validMovies[i] == null){
+                            break;
+                        }
+// need to clear all files
+                        String outputFileName = validMovies[i].getGenres() + ".csv";
+                        String outputFilePath = outputdirectoryPath+"\\" + outputFileName; 
+                        movieWriter = new PrintWriter(new FileOutputStream(outputFilePath, true));
+                        movieWriter.println(validMovies[i].toString());
+                        //System.out.println(validMovies[i].toString());
+                        movieWriter.flush();
+                        movieWriter.close();
+                    }
                    
                 }
 
@@ -105,14 +121,11 @@ public class Driver {
                 manifestScanner.close();
             }
             
-            /* 
-            if (badMoviesClearFile != null) {
-                badMoviesClearFile.close();
-            }
-            */
-            
         }
-    
+
+
+        
+
         return "part2_manifest.txt";  // returns name of part 2 manifest file
 
     }
@@ -159,19 +172,18 @@ public class Driver {
         int lineCount = 0;
         int movieCount = 0;
 
-        String movieFilePath = directoryPath+"\\"+fileName; 
+        String movieFilePath = inputdirectoryPath+"\\"+fileName; 
 
         File movieFile = new File(movieFilePath);
         Scanner movieFileScanner = null;
-        PrintWriter BadMovieWriter = null;
+        PrintWriter badMovieWriter = null;
 
         try{
 
             
             movieFileScanner = new Scanner(new FileInputStream(movieFile));
-            
-            // might move to parent method if it will rewrite itsef with a new file call
-            BadMovieWriter = new PrintWriter(new FileOutputStream("bad_movie_records.txt", true));
+            String badMoviesoutputFilePath = outputdirectoryPath+"\\" + "bad_movie_records.txt"; 
+            badMovieWriter = new PrintWriter(new FileOutputStream(badMoviesoutputFilePath, true));
 
 
             while(movieFileScanner.hasNextLine()){
@@ -184,13 +196,13 @@ public class Driver {
                     movieCount++; // executed only if no exceptions
 
                 } catch (SyntaxException e1){
-                    BadMovieWriter.println("syntax error " + e1.getMessage()+ " " + "[" + line + "]" + fileName+ " " + lineCount);
+                    badMovieWriter.println("syntax error " + e1.getMessage()+ " " + "[" + line + "]" + fileName+ " " + lineCount);
         
                 } catch (MultipleSemanticExceptions es){
-                    BadMovieWriter.println("multiple semantic errors " + es.getMessages() + " " + "[" + line + "]" + fileName+ " " + lineCount);
+                    badMovieWriter.println("multiple semantic errors " + es.getMessages() + " " + "[" + line + "]" + fileName+ " " + lineCount);
                     
                 } catch (SemanticException e2){
-                    BadMovieWriter.println("semantic error " + e2.getMessage() + " " + "[" + line + "]" + fileName + " " + lineCount);
+                    badMovieWriter.println("semantic error " + e2.getMessage() + " " + "[" + line + "]" + fileName + " " + lineCount);
                     
                 }
 
@@ -198,7 +210,7 @@ public class Driver {
             }
 
             movieFileScanner.close();
-            BadMovieWriter.close();
+            badMovieWriter.close();
             
             return movieRecords;
 
