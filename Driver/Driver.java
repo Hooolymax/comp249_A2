@@ -74,12 +74,18 @@ public class Driver {
         
         File manifestFile = new File(manifestFilePath);
         Scanner manifestScanner = null;
-        PrintWriter badMoviesWriter = null;
+        //PrintWriter badMoviesClearFile = null;
+        
 
 
         try{
             manifestScanner=new Scanner(new FileInputStream(manifestFile));
-            badMoviesWriter=new PrintWriter(new FileOutputStream("bad_movie_records.txt", true));
+            
+            // clear and create file
+            PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream("bad_movie_records.txt"));
+            badMoviesClearFile.print("");
+            badMoviesClearFile.close();
+
 
             while (manifestScanner.hasNextLine()){
                 String movieFileName = manifestScanner.nextLine().trim();
@@ -98,9 +104,13 @@ public class Driver {
             if (manifestScanner != null) {
                 manifestScanner.close();
             }
-            if (badMoviesWriter != null) {
-                badMoviesWriter.close();
+            
+            /* 
+            if (badMoviesClearFile != null) {
+                badMoviesClearFile.close();
             }
+            */
+            
         }
     
         return "part2_manifest.txt";  // returns name of part 2 manifest file
@@ -152,21 +162,21 @@ public class Driver {
         String movieFilePath = directoryPath+"\\"+fileName; 
 
         File movieFile = new File(movieFilePath);
-        Scanner inputStream = null;
-        PrintWriter outputStream = null;
+        Scanner movieFileScanner = null;
+        PrintWriter BadMovieWriter = null;
 
         try{
 
             
-            inputStream = new Scanner(new FileInputStream(movieFile));
+            movieFileScanner = new Scanner(new FileInputStream(movieFile));
             
             // might move to parent method if it will rewrite itsef with a new file call
-            outputStream = new PrintWriter(new FileOutputStream("bad_movie_records.txt", true));
+            BadMovieWriter = new PrintWriter(new FileOutputStream("bad_movie_records.txt", true));
 
 
-            while(inputStream.hasNextLine()){
+            while(movieFileScanner.hasNextLine()){
 
-                line = inputStream.nextLine().trim();
+                line = movieFileScanner.nextLine().trim();
 
 // deal with comma inside quotes                
                 try{
@@ -174,21 +184,21 @@ public class Driver {
                     movieCount++; // executed only if no exceptions
 
                 } catch (SyntaxException e1){
-                    outputStream.println("syntax error " + e1.getMessage()+ " " + line + fileName + lineCount);
-                    System.out.println("syntax error " + e1.getMessage()+ " " + line + fileName + lineCount);
+                    BadMovieWriter.println("syntax error " + e1.getMessage()+ " " + "[" + line + "]" + fileName+ " " + lineCount);
+        
                 } catch (MultipleSemanticExceptions es){
-                    outputStream.println("multiple semantic errors " + es.getMessages() + " " + line + fileName + lineCount);
-                    System.out.println("multiple semantic errors " + es.getMessages() + " "+ line + fileName + lineCount);
+                    BadMovieWriter.println("multiple semantic errors " + es.getMessages() + " " + "[" + line + "]" + fileName+ " " + lineCount);
+                    
                 } catch (SemanticException e2){
-                    outputStream.println("semantic error " + e2.getMessage() + " "+ line + fileName + lineCount);
-                    System.out.println("semantic error " + e2.getMessage()+ " " + line + fileName + lineCount);
+                    BadMovieWriter.println("semantic error " + e2.getMessage() + " " + "[" + line + "]" + fileName + " " + lineCount);
+                    
                 }
 
                 lineCount ++;
             }
 
-            inputStream.close();
-            outputStream.close();
+            movieFileScanner.close();
+            BadMovieWriter.close();
             
             return movieRecords;
 

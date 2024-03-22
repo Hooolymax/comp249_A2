@@ -347,7 +347,7 @@ public class Movie implements Serializable {
 
         if(candidateGenres.isEmpty()){
 
-            throw new BadGenreException("Invalid Genres");
+            throw new BadGenreException("missing genre");
 
 
         }
@@ -391,7 +391,7 @@ public class Movie implements Serializable {
         String validRatings[]={"PG", "Unrated", "G", "R", "PG-13", "NC-17"};
 
         if(candidateRating.isEmpty()){
-            throw new BadRatingException("Invalid Rating");
+            throw new BadRatingException("missing rating");
         }
 
 
