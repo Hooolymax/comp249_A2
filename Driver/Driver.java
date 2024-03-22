@@ -29,8 +29,8 @@ public class Driver {
     public static void main(String[] args) {
 
 
-        // Directory to CSV files (replace with your path when run)
-        String directoryPath = "C:\\Users\\volit\\OneDrive\\Documents\\GitHub\\comp249_A2\\inputFiles"; 
+        // Directory to CSV files
+        String directoryPath = "inputFiles"; 
         // Path to the manifest 
         String manifestFilePath = directoryPath+"\\part1_manifest.txt"; 
         
