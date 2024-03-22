@@ -1,9 +1,14 @@
-package Movie;
+// -----------------------------------------------------
+// Assignment 2
+// Written by: Alisa Ignatina 40267100 and Jinghao Lai 40041316 
+// -----------------------------------------------------
+
+package movie;
 
 import java.io.Serializable;
 import java.util.Optional;
 
-import Exceptions.*;
+import exceptions.*;
 
 public class Movie implements Serializable {
 

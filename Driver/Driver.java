@@ -1,4 +1,9 @@
-package Driver;
+// -----------------------------------------------------
+// Assignment 2
+// Written by: Alisa Ignatina 40267100 and Jinghao Lai 40041316 
+// -----------------------------------------------------
+
+package driver;
 
 import java.util.Scanner;
 
@@ -12,8 +17,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import Exceptions.*;
-import Movie.Movie;
+import exceptions.*;
+import movie.Movie;
 
 
 public class Driver {
@@ -50,28 +55,6 @@ public class Driver {
         do_part3(part3_manifest /* , ... */); // deserialize
 
         // and navigate
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-
-        
-
 
 
 
@@ -137,12 +120,7 @@ return;
 
 
 
-        
-
-       
-
     
-
 
     /**
      * Processes a file containing movie records and partitions it into an array of Movie objects.
