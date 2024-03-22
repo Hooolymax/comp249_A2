@@ -30,7 +30,7 @@ public class Driver {
 
 
         // Directory to CSV files
-        String directoryPath = "inputFiles"; 
+        String directoryPath ="inputFiles"; 
         // Path to the manifest 
         String manifestFilePath = directoryPath+"\\part1_manifest.txt"; 
         

@@ -14,9 +14,9 @@ public class Movie implements Serializable {
 
     private int year;
     private String title;
-    private Double duration;
+    private int duration;
     private String genres;
-    private int rating;
+    private String rating;
     private double score;
     private String director;
     private String actor1;
@@ -26,9 +26,9 @@ public class Movie implements Serializable {
     public Movie(){
         this.year = 0;
         this.title = "n/a";
-        this.duration = 0.0;
+        this.duration = 0;
         this.genres = "n/a";
-        this.rating = 0;
+        this.rating = "n/a";
         this.score = 0;
         this.director = "n/a";
         this.actor1 = "n/a";
@@ -56,13 +56,26 @@ public class Movie implements Serializable {
         
 
         // max
-        this.duration = movieRecordFields[2];
+       
+        try {
+            this.duration = validateDuration(movieRecordFields[2]);
+        } catch (BadDurationException e) {
+            exceptions[exceptionCount++] = e;
+        }
 
         // max
-        this.genres = movieRecordFields[3];
+        try {
+            this.genres = validateGenres(movieRecordFields[3]);
+        } catch (BadGenreException e) {
+            exceptions[exceptionCount++] = e;
+        }
 
         // max
-        this.rating = movieRecordFields[4];
+        try {
+            this.rating = validateRating(movieRecordFields[4]);
+        } catch (BadRatingException e) {
+            exceptions[exceptionCount++] = e;
+        }
 
         // alisa
         try{
@@ -93,6 +106,9 @@ public class Movie implements Serializable {
             }
         }
     }
+
+    
+
 
     public Movie(Movie aMovie) {
         this.year = aMovie.year;
@@ -145,11 +161,11 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public Double getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Double duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -161,15 +177,15 @@ public class Movie implements Serializable {
         this.genres = genres;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -282,6 +298,132 @@ public class Movie implements Serializable {
     // max
     public static String validateActor(String candidateActor){
         return candidateActor;
+    }
+
+
+
+
+    //validates the movie duration: an integer from 30 through 300 minutes.
+
+    public static int validateDuration(String candidateDuration)throws BadDurationException{
+
+
+        if (candidateDuration.isEmpty()){
+            throw new BadDurationException("missing duration");
+        
+        }
+
+        else{
+
+
+            try{
+                int duration=Integer.parseInt(candidateDuration);
+                if(duration>=30&&duration<=300){
+                    return duration;
+                }else{
+
+                    throw new BadDurationException("Invalid duration");
+                }
+            }catch (NumberFormatException e){
+                throw new BadDurationException("Invalid duration");
+            }
+
+
+        }
+
+    }
+
+
+
+
+
+    //validates the movie genres
+
+    public static String validateGenres(String candidateGenres)throws BadGenreException{
+
+        String validGenres[]={"musical", "comedy", "animation", "adventure", "drama", "crime", "biography",
+        "horror", "action", "documentary", "fantasy", "mystery", "sci-fi", "family",
+        "romance", "thriller", "western"};
+
+
+
+        if(candidateGenres.isEmpty()){
+
+            throw new BadGenreException("Invalid Genres");
+
+
+        }
+        else{
+
+            try{
+
+                 boolean isValidGenre = false;
+                 for (String validGenre : validGenres) {
+
+                    if (candidateGenres.trim().equalsIgnoreCase(validGenre)){
+                        isValidGenre = true;
+                        break;
+                    }
+
+                }
+
+                    if (!isValidGenre) {
+                        throw new BadGenreException("invalid genre:" + candidateGenres);
+                    }
+
+                
+
+                return candidateGenres;
+            }catch (SemanticException e){
+                throw new BadGenreException("Invalid genre");
+            }
+        }
+
+    }
+
+
+
+
+    //validates the movie rating
+
+
+
+    public static String validateRating(String candidateRating)throws BadRatingException{
+
+        String validRatings[]={"PG", "Unrated", "G", "R", "PG-13", "NC-17"};
+
+        if(candidateRating.isEmpty()){
+            throw new BadRatingException("Invalid Rating");
+        }
+
+
+        try{
+
+            boolean isValidRating=false;
+
+            for(String validRating:validRatings){
+
+                if(candidateRating.trim().equalsIgnoreCase(validRating)){
+                    isValidRating=true;
+                }
+            }
+
+                if(!isValidRating){
+                    throw new BadRatingException("Invalid Rating");
+                }
+
+
+            
+
+            return candidateRating;
+
+
+        }catch(SemanticException e){
+
+            throw new BadRatingException("Invalid Rating");
+        }
+
+
     }
 
     

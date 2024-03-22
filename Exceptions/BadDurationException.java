@@ -6,5 +6,10 @@
 package exceptions;
 
 public class BadDurationException extends SemanticException{
+
+
+    public BadDurationException(String message) {
+        super(message);
+    }
     
 }

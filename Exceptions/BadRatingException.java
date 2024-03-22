@@ -5,6 +5,8 @@
 
 package exceptions;
 
-public class BadRatingException {
-    
+public class BadRatingException extends SemanticException{
+    public BadRatingException(String message) {
+        super(message);
+     }
 }

@@ -5,6 +5,14 @@
 
 package exceptions;
 
-public class BadGenreException {
+public class BadGenreException extends SemanticException{
+
+
+
+    
+    public BadGenreException(String message) {
+       super(message);
+    }
+    
     
 }

@@ -5,6 +5,11 @@
 
 package exceptions;
 
-public class BadNameException {
+public class BadNameException extends SemanticException{
+
+    public BadNameException(String message) {
+        super(message);
+     }
+    
     
 }
