@@ -54,8 +54,6 @@ public class Movie implements Serializable {
             exceptions[exceptionCount++] = e;
         }
         
-
-        // max
        
         try {
             this.duration = validateDuration(movieRecordFields[2]);
@@ -63,21 +61,21 @@ public class Movie implements Serializable {
             exceptions[exceptionCount++] = e;
         }
 
-        // max
+
         try {
             this.genres = validateGenres(movieRecordFields[3]);
         } catch (BadGenreException e) {
             exceptions[exceptionCount++] = e;
         }
 
-        // max
+       
         try {
             this.rating = validateRating(movieRecordFields[4]);
         } catch (BadRatingException e) {
             exceptions[exceptionCount++] = e;
         }
 
-        // alisa
+        
         try{
             this.score = validateScore(movieRecordFields[5]);
         }  catch (BadScoreException e) {
@@ -85,13 +83,13 @@ public class Movie implements Serializable {
         }
         
 
-        // max 
+       // add missing director
         this.director = movieRecordFields[6];
 
         // alisa
         this.actor1 = validateActor(movieRecordFields[7]);
 
-        // max
+        // add validate actor
         this.actor2 = movieRecordFields[8]; 
 
         // max
@@ -240,7 +238,7 @@ public class Movie implements Serializable {
 
             try{
                 int year = Integer.parseInt(candidateYear);
-                if (year > 1990 && year <= 2024){
+                if (year >= 1990 && year <= 2024){
                     return year;
                 } else {
                     throw new BadYearException("invalid year");
@@ -295,7 +293,7 @@ public class Movie implements Serializable {
     }
 
 
-    // max
+    // finish
     public static String validateActor(String candidateActor){
         return candidateActor;
     }

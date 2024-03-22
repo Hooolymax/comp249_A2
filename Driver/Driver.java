@@ -24,13 +24,15 @@ import movie.Movie;
 public class Driver {
 
     
-    final static int MAXNUMMOVIEINFILE = 50;
+    final static int MAXNUMMOVIEINFILE = 1000;
+
+    // Directory to CSV files
+    static String directoryPath ="inputFiles"; 
 
     public static void main(String[] args) {
 
 
-        // Directory to CSV files
-        String directoryPath ="inputFiles"; 
+        
         // Path to the manifest 
         String manifestFilePath = directoryPath+"\\part1_manifest.txt"; 
         
@@ -41,8 +43,9 @@ public class Driver {
 
 
 
-
-
+        System.out.println();
+        System.out.println("Welcome to Alisa's and Max's program");
+        System.out.println();
 
         // part 1’s manifest file
         String part1_manifest = manifestFilePath;
@@ -57,30 +60,16 @@ public class Driver {
         // and navigate
 
 
+        System.out.println("Goodbuy!");
 
-return;
+
+        return;
 
 
 
     }
 
     public static String do_part1(String manifestFilePath) {
-
-        // max
-        // read p1 manifest file line by line and handle the exception if it does not exist
-        // check if it s empty 
-        // if nor read it line by line and open the files containing movies (separate function)
-        
-        // handle the exceptions and go to the next file - 
-        // comment what is missing in case of exception(s) and put it into bad files
-        // based on a genre write it to a file 
-
-        // alisa 
-        // throws syntax and semantic exceptions
-        // function takes a file name, than open it and read line by line
-        // each line is checked for syntax errors and a movie object is created (and returned) if no errors else exception
-
-        // create manifest file
 
         
         File manifestFile = new File(manifestFilePath);
@@ -116,7 +105,30 @@ return;
     
         return "part2_manifest.txt";  // returns name of part 2 manifest file
 
-        }
+    }
+
+
+
+    //Create the manifest File
+    
+    public static void createManifestFile(String directoryPath, String manifestFileName) {
+
+        File dir = new File(directoryPath);
+        File[] files = dir.listFiles((dir1, name) -> name.endsWith(".csv"));
+
+            try (FileWriter writer = new FileWriter(manifestFileName)) {
+                if(files!=null){
+                    for(File file:files){
+                        writer.write(file.getName()+"\n");
+                    }
+                }
+
+            }catch(IOException e){
+                System.out.println("Can't create manifest file");
+            }
+    
+
+    }
 
 
 
@@ -137,13 +149,16 @@ return;
         int lineCount = 0;
         int movieCount = 0;
 
+        String movieFilePath = directoryPath+"\\"+fileName; 
+
+        File movieFile = new File(movieFilePath);
         Scanner inputStream = null;
         PrintWriter outputStream = null;
 
         try{
 
             
-            inputStream = new Scanner(new FileInputStream(fileName));
+            inputStream = new Scanner(new FileInputStream(movieFile));
             
             // might move to parent method if it will rewrite itsef with a new file call
             outputStream = new PrintWriter(new FileOutputStream("bad_movie_records.txt", true));
@@ -151,18 +166,22 @@ return;
 
             while(inputStream.hasNextLine()){
 
-                line = inputStream.nextLine();
+                line = inputStream.nextLine().trim();
 
+// deal with comma inside quotes                
                 try{
-                    movieRecords[movieCount] = createMovieRecord(line.split(" , "));
+                    movieRecords[movieCount] = createMovieRecord(line.split(","));
                     movieCount++; // executed only if no exceptions
 
                 } catch (SyntaxException e1){
-                    outputStream.println("syntax error" + e1.getMessage() + line + fileName + lineCount);
+                    outputStream.println("syntax error " + e1.getMessage()+ " " + line + fileName + lineCount);
+                    System.out.println("syntax error " + e1.getMessage()+ " " + line + fileName + lineCount);
                 } catch (MultipleSemanticExceptions es){
-                    outputStream.println("multiple semantic errors" + es.getMessages() + line + fileName + lineCount);
+                    outputStream.println("multiple semantic errors " + es.getMessages() + " " + line + fileName + lineCount);
+                    System.out.println("multiple semantic errors " + es.getMessages() + " "+ line + fileName + lineCount);
                 } catch (SemanticException e2){
-                    outputStream.println("semantic error" + e2.getMessage() + line + fileName + lineCount);
+                    outputStream.println("semantic error " + e2.getMessage() + " "+ line + fileName + lineCount);
+                    System.out.println("semantic error " + e2.getMessage()+ " " + line + fileName + lineCount);
                 }
 
                 lineCount ++;
@@ -181,6 +200,7 @@ return;
 
     }
 
+
     /**
      * Validates syntax and semantic of movie record fields and creates a Movie object from them.
      * 
@@ -192,11 +212,11 @@ return;
     public static Movie createMovieRecord(String[] movieRecordFields) throws SyntaxException, SemanticException{
         
         if (movieRecordFields.length > 10){
-            throw new ExcessFieldsException();
+            throw new ExcessFieldsException("excess fields");
         }
 
         if (movieRecordFields.length < 10){
-            throw new MissingFieldsException();
+            throw new MissingFieldsException("missing fields");
         }
 
         for (int i = 0; i<10; i++){
@@ -208,7 +228,7 @@ return;
                     }
                 }
                 if (count % 2 != 0){
-                    throw new MissingQuotesException();
+                    throw new MissingQuotesException("missing quotes");
                 }
             }
         }
@@ -248,32 +268,6 @@ return;
 
 
 
-    //Create the manifest File
     
-        public static void createManifestFile(String directoryPath, String manifestFileName) {
-    
-            File dir = new File(directoryPath);
-            File[] files = dir.listFiles((dir1, name) -> name.endsWith(".csv"));
-    
-             try (FileWriter writer = new FileWriter(manifestFileName)) {
-                if(files!=null){
-                    for(File file:files){
-                        writer.write(file.getName()+"\n");
-    
-                    }
-    
-    
-    
-                }
-    
-    
-    
-    
-             }catch(IOException e){
-                System.out.println("Can't create manifest file");
-             }
-    
-
-}
 
 }

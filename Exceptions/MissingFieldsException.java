@@ -6,5 +6,7 @@
 package exceptions;
 
 public class MissingFieldsException extends SyntaxException{
-    
+    public MissingFieldsException(String message) {
+        super(message);
+    }
 }

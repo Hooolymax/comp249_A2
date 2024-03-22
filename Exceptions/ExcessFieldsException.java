@@ -6,5 +6,9 @@
 package exceptions;
 
 public class ExcessFieldsException extends SyntaxException{
+
+    public ExcessFieldsException(String message) {
+        super(message);
+    }
     
 }

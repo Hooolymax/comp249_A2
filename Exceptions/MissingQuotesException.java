@@ -6,5 +6,9 @@
 package exceptions;
 
 public class MissingQuotesException extends SyntaxException{
+
+    public MissingQuotesException(String message) {
+        super(message);
+    }
     
 }
