@@ -192,7 +192,7 @@ public class Driver {
 
 // deal with comma inside quotes                
                 try{
-                    movieRecords[movieCount] = createMovieRecord(line.split(","));
+                    movieRecords[movieCount] = createMovieRecord(line);
                     movieCount++; // executed only if no exceptions
 
                 } catch (SyntaxException e1){
@@ -224,36 +224,80 @@ public class Driver {
 
 
     /**
-     * Validates syntax and semantic of movie record fields and creates a Movie object from them.
+     * parses the line into fields and validates the number of fields
+     * @param line
+     * @return array of String movie fields
+     * @throws ExcessFieldsException
+     * @throws MissingFieldsException
+     */
+    public static String[] parseLine(String line) throws ExcessFieldsException, MissingFieldsException{
+        
+        String[] movieRecordFields = new String[10];
+        int fieldCount = 0;
+        int quotesCount = 0;
+        String stack = "";
+
+        try{
+
+            for (int i=0; i < line.length(); i++){
+                // comma, can parse it since no enclosed quotes
+                if (line.charAt(i) == ',' && quotesCount % 2 == 0){
+                    movieRecordFields[fieldCount++] = stack.trim();
+                    stack = ""; // empty stack for the next field
+                    continue;
+                }
+
+                // if any other character
+                stack += line.charAt(i);
+
+                //if quotes 
+                if (line.charAt(i) == '\"'){
+                    quotesCount++;
+                }
+                
+            }
+
+            // last element
+            movieRecordFields[fieldCount] = stack.trim();
+
+            if (fieldCount < 9 ){
+                throw new MissingFieldsException("missing fields");
+            }
+
+        // attempting to create 11th element
+        } catch(IndexOutOfBoundsException e){
+            throw new ExcessFieldsException("excess fields");
+        }
+
+        return movieRecordFields;
+        
+    }
+
+
+    /**
+     * partiates string into movie record fields and validates syntax and semantic of it, then creates a Movie object from them.
      * 
      * @param movieRecordFields - String array of all movie record fields
      * @return valid movie object
      * @throws SyntaxException - all types of syntax errors
      * @throws SemanticException - all types of semantic errors
      */
-    public static Movie createMovieRecord(String[] movieRecordFields) throws SyntaxException, SemanticException{
+    public static Movie createMovieRecord(String line) throws SyntaxException, SemanticException{
         
-        if (movieRecordFields.length > 10){
-            throw new ExcessFieldsException("excess fields");
-        }
-
-        if (movieRecordFields.length < 10){
-            throw new MissingFieldsException("missing fields");
-        }
-
-        for (int i = 0; i<10; i++){
-            if (movieRecordFields[i].contains("\"")){
-                int count= 0;
-                for (int j=0; j < movieRecordFields[i].length(); j++){
-                    if (movieRecordFields[i].charAt(j) == '\"'){
-                        count++;
-                    }
-                }
-                if (count % 2 != 0){
-                    throw new MissingQuotesException("missing quotes");
-                }
+        
+        // checking that quotes are paired
+        int count = 0;
+        for (int i=0; i < line.length(); i++){
+            if (line.charAt(i) == '\"'){
+                count++;
             }
         }
+        if (count % 2 != 0){
+            throw new MissingQuotesException("missing quotes");
+        }
+        
+        
+        String[] movieRecordFields = parseLine(line);
 
         return new Movie(movieRecordFields);
 

@@ -266,7 +266,7 @@ public class Movie implements Serializable {
 
 
     /**
-     * Validates the movie score which must be positive
+     * Validates the movie score which must be positive and double
      * @param candidateScore
      * @return valid score
      * @throws BadScoreException in case of missing score or invalid score
@@ -279,11 +279,23 @@ public class Movie implements Serializable {
         } else {
 
             try{
-                double score = Double.parseDouble(candidateScore);
-                if (score > 0){
-                    return score;
-                } else {
+
+                // trying to parse the score as an integer to catch the exception
+                try{
+                    Integer.parseInt(candidateScore);
+                    // throw an exception if passed
                     throw new BadScoreException("invalid score");
+        
+                } catch (NumberFormatException e) {
+                    
+                    // Expected
+                    
+                    double score = Double.parseDouble(candidateScore);
+                    if (score > 0){
+                        return score;
+                    } else {
+                        throw new BadScoreException("invalid score");
+                    }
                 }
             } catch (NumberFormatException e) {
                 throw new BadScoreException("invalid score");
