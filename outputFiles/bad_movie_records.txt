@@ -11,7 +11,7 @@ semantic error Invalid genre [2004,"I, Robot ",115,Aktion,PG-13,7.1,Alex Proyas,
 semantic error missing rating [2004,"I, Robot ",115,Action, ,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 11
 multiple semantic errors invalid year, Invalid Rating [1 2004,"I, Robot ",115,Action,PG-31,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 12
 semantic error missing rating [2004,"I, Robot ",115,Action, ,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 13
-multiple semantic errors invalid year, score must be a decimal value, not an integer [1 2004,"I, Robot ",115,Action,PG-13,71,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 14
+multiple semantic errors invalid year, invalid score [1 2004,"I, Robot ",115,Action,PG-13,71,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 14
 semantic error invalid score [2004,"I, Robot ",115,Action,PG-13,ten,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 15
 semantic error missing score [2004,"I, Robot ",115,Action,PG-13, ,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride]Movies1990.csv 16
 semantic error invalid year [1 2004,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith, ,Chi McBride]Movies1990.csv 17
@@ -41,74 +41,74 @@ syntax error excess fields [1990,Pretty Woman,125,Comedy,R,6.9,Garry Marshall,Ju
 syntax error excess fields [1990,Dances with Wolves,236,Adventure,PG-13,8,Kevin Costner,Mary McDonnell,Michael Spears,Maury Chaykin,]Movies1990.csv 41
 syntax error excess fields [1990,Ghost,127,Drama,PG-13,7,Jerry Zucker,Demi Moore,Tony Goldwyn,Phil Leeds,]Movies1990.csv 42
 syntax error excess fields [1990,Home Alone,103,Comedy,PG,7.5,Chris Columbus,Macaulay Culkin,Devin Ratray,Catherine O'Hara,]Movies1990.csv 43
-semantic error score must be a decimal value, not an integer [1991,Showdown in Little Tokyo,79,Action,R,6,Mark L. Lester,Cary-Hiroyuki Tagawa,Tia Carrere,Vernee Watson]Movies1991.csv 2
-semantic error score must be a decimal value, not an integer [1991,Harley Davidson and the Marlboro Man,98,Action,R,6,Simon Wincer,Vanessa Williams,Tia Carrere,Don Johnson]Movies1991.csv 6
+semantic error invalid score [1991,Showdown in Little Tokyo,79,Action,R,6,Mark L. Lester,Cary-Hiroyuki Tagawa,Tia Carrere,Vernee Watson]Movies1991.csv 2
+semantic error invalid score [1991,Harley Davidson and the Marlboro Man,98,Action,R,6,Simon Wincer,Vanessa Williams,Tia Carrere,Don Johnson]Movies1991.csv 6
 semantic error invalid year [2991,Hudson Hawk,100,Action,R,5.7,Michael Lehmann,Bruce Willis,James Coburn,Richard E. Grant]Movies1991.csv 9
 semantic error Invalid Rating [1991,Bill & Ted's Bogus Journey,93,Adventure,PJ,6.2,Peter Hewitt,Keanu Reeves,George Carlin,Alex Winter]Movies1991.csv 15
-semantic error score must be a decimal value, not an integer [1991,Teenage Mutant Ninja Turtles II: The Secret of the Ooze,88,Action,PG,6,Michael Pressman,Kevin Nash,Paige Turco,Ernie Reyes Jr.]Movies1991.csv 21
+semantic error invalid score [1991,Teenage Mutant Ninja Turtles II: The Secret of the Ooze,88,Action,PG,6,Michael Pressman,Kevin Nash,Paige Turco,Ernie Reyes Jr.]Movies1991.csv 21
 semantic error Invalid duration [1991,Hook,333,Adventure,PG,6.7,Steven Spielberg,Robin Williams,Julia Roberts,Bob Hoskins]Movies1991.csv 25
-semantic error score must be a decimal value, not an integer [1992,Raising Cain,91,Crime,R,6,Brian De Palma,Steven Bauer,Gabrielle Carteris,Gregg Henry]Movies1992.csv 7
-semantic error score must be a decimal value, not an integer [1992,Medicine Man,106,Adventure,PG-13,6,John McTiernan,Lorraine Bracco,Jose Wilker,Sean Connery]Movies1992.csv 10
+semantic error invalid score [1992,Raising Cain,91,Crime,R,6,Brian De Palma,Steven Bauer,Gabrielle Carteris,Gregg Henry]Movies1992.csv 7
+semantic error invalid score [1992,Medicine Man,106,Adventure,PG-13,6,John McTiernan,Lorraine Bracco,Jose Wilker,Sean Connery]Movies1992.csv 10
 semantic error invalid year [l992,Unforgiven,131,Drama,R,8.3,Clint Eastwood,Clint Eastwood,Morgan Freeman,Frances Fisher]Movies1992.csv 20
-semantic error score must be a decimal value, not an integer [1992,Wayne's World,94,Comedy,PG-13,7,Penelope Spheeris,Tia Carrere,Lara Flynn Boyle,Kurt Fuller]Movies1992.csv 22
-multiple semantic errors Invalid genre, score must be a decimal value, not an integer [1992,Batman Returns,126,Aktion,PG-13,7,Tim Burton,Michael Gough,Vincent Schiavelli,Andrew Bryniarski]Movies1992.csv 26
-semantic error score must be a decimal value, not an integer [1992,Aladdin,90,Adventure,G,80,Ron Clements,Robin Williams,Frank Welker,Scott Weinger]Movies1992.csv 28
-multiple semantic errors Invalid duration, score must be a decimal value, not an integer [1993,"Blood In, Blood Out",330,Crime,R,8,Taylor Hackford,Delroy Lindo,Jesse Borrego,Raymond Cruz]Movies1993.csv 6
+semantic error invalid score [1992,Wayne's World,94,Comedy,PG-13,7,Penelope Spheeris,Tia Carrere,Lara Flynn Boyle,Kurt Fuller]Movies1992.csv 22
+multiple semantic errors Invalid genre, invalid score [1992,Batman Returns,126,Aktion,PG-13,7,Tim Burton,Michael Gough,Vincent Schiavelli,Andrew Bryniarski]Movies1992.csv 26
+semantic error invalid score [1992,Aladdin,90,Adventure,G,80,Ron Clements,Robin Williams,Frank Welker,Scott Weinger]Movies1992.csv 28
+multiple semantic errors Invalid duration, invalid score [1993,"Blood In, Blood Out",330,Crime,R,8,Taylor Hackford,Delroy Lindo,Jesse Borrego,Raymond Cruz]Movies1993.csv 6
 semantic error Invalid Rating [1993,Dazed and Confused,102,Comedy,RRR,7.7,Richard Linklater,Milla Jovovich,Adam Goldberg,Cole Hauser]Movies1993.csv 7
-semantic error score must be a decimal value, not an integer [1993,True Romance,121,Action,R,8,Tony Scott,Brad Pitt,Gary Oldman,Michael Rapaport]Movies1993.csv 11
+semantic error invalid score [1993,True Romance,121,Action,R,8,Tony Scott,Brad Pitt,Gary Oldman,Michael Rapaport]Movies1993.csv 11
 semantic error missing score [1994,Wyatt Earp,212,Adventure,PG-13,,Lawrence Kasdan,Dennis Quaid,Catherine O'Hara,Isabella Rossellini]Movies1994.csv 15
-semantic error score must be a decimal value, not an integer [1994,The Shadow,93,Action,PG-13,6,Russell Mulcahy,Jonathan Winters,Peter Boyle,John Kapelos]Movies1994.csv 18
+semantic error invalid score [1994,The Shadow,93,Action,PG-13,6,Russell Mulcahy,Jonathan Winters,Peter Boyle,John Kapelos]Movies1994.csv 18
 semantic error missing duration [1994,Richie Rich,,Comedy,PG,5.2,Donald Petrie,Macaulay Culkin,John Larroquette,Jonathan Hyde]Movies1994.csv 19
-semantic error score must be a decimal value, not an integer [1994,Disclosure,128,Drama,R,6,Barry Levinson,Demi Moore,Dylan Baker,Roma Maffia]Movies1994.csv 30
-semantic error score must be a decimal value, not an integer [1995,Congo,109,Action,PG-13,5,Frank Marshall,Dylan Walsh,Joe Don Baker,Grant Heslov]Movies1995.csv 45
-semantic error score must be a decimal value, not an integer [1995,Casper,100,Comedy,PG,6,Brad Silberling,Eric Idle,Fred Rogers,Cathy Moriarty]Movies1995.csv 51
+semantic error invalid score [1994,Disclosure,128,Drama,R,6,Barry Levinson,Demi Moore,Dylan Baker,Roma Maffia]Movies1994.csv 30
+semantic error invalid score [1995,Congo,109,Action,PG-13,5,Frank Marshall,Dylan Walsh,Joe Don Baker,Grant Heslov]Movies1995.csv 45
+semantic error invalid score [1995,Casper,100,Comedy,PG,6,Brad Silberling,Eric Idle,Fred Rogers,Cathy Moriarty]Movies1995.csv 51
 multiple semantic errors Invalid genre, missing score [1996,Bound,109,Krime,R,,Lana Wachowski,Christopher Meloni,Kevin Michael Richardson,Peter Spellos]Movies1996.csv 8
-semantic error score must be a decimal value, not an integer [1996,Kama Sutra: A Tale of Love,109,Crime,R,6,Mira Nair,Indira Varma,Sarita Choudhury,Rekha]Movies1996.csv 9
+semantic error invalid score [1996,Kama Sutra: A Tale of Love,109,Crime,R,6,Mira Nair,Indira Varma,Sarita Choudhury,Rekha]Movies1996.csv 9
 multiple semantic errors invalid year, missing rating [l996,Bogus,110,Comedy,,5.3,Norman Jewison,Haley Joel Osment,Nancy Travis,Andrea Martin]Movies1996.csv 10
-semantic error score must be a decimal value, not an integer [1996,Girl 6,108,Comedy,R,5,Spike Lee,Michael Imperioli,Debi Mazar,Gretchen Mol]Movies1996.csv 12
+semantic error invalid score [1996,Girl 6,108,Comedy,R,5,Spike Lee,Michael Imperioli,Debi Mazar,Gretchen Mol]Movies1996.csv 12
 multiple semantic errors invalid year, missing score [-1996,The Fan,116,Action,R,,Tony Scott,Robert De Niro,Kurt Fuller,Ellen Barkin]Movies1996.csv 27
-semantic error score must be a decimal value, not an integer [1996,Multiplicity,117,Comedy,PG-13,6,Harold Ramis,John de Lancie,Brian Doyle-Murray,Obba Babatunde]Movies1996.csv 29
-semantic error score must be a decimal value, not an integer [1996,Sling Blade,148,Drama,R,8,Billy Bob Thornton,Robert Duvall,Dwight Yoakam,J.T. Walsh]Movies1996.csv 34
+semantic error invalid score [1996,Multiplicity,117,Comedy,PG-13,6,Harold Ramis,John de Lancie,Brian Doyle-Murray,Obba Babatunde]Movies1996.csv 29
+semantic error invalid score [1996,Sling Blade,148,Drama,R,8,Billy Bob Thornton,Robert Duvall,Dwight Yoakam,J.T. Walsh]Movies1996.csv 34
 semantic error Invalid duration [1996,Striptease,1170,Comedy,R,4.3,Andrew Bergman,Demi Moore,Rumer Willis,Paul Guilfoyle]Movies1996.csv 44
-semantic error score must be a decimal value, not an integer [1996,Happy Gilmore,92,Comedy,PG-13,7,Dennis Dugan,Adam Sandler,Kevin Nealon,Frances Bay]Movies1996.csv 51
-semantic error score must be a decimal value, not an integer [1996,The Cable Guy,96,Comedy,PG-13,6,Ben Stiller,Matthew Broderick,Janeane Garofalo,Andy Dick]Movies1996.csv 62
-multiple semantic errors invalid year, Invalid duration, score must be a decimal value, not an integer [2996,Broken Arrow,900,Action,R,60,John Woo,Delroy Lindo,Samantha Mathis,Bob Gunton]Movies1996.csv 66
-semantic error score must be a decimal value, not an integer [1997,I Married a Strange Person!,75,Animation,R,7,Bill Plympton,Charis Michelsen,Bill Martone,Richard Spore]Movies1997.csv 3
-semantic error score must be a decimal value, not an integer [1997,Dream with the Fishes,97,Comedy,R,7,Finn Taylor,David Arquette,Cathy Moriarty,Kathryn Erbe]Movies1997.csv 5
-semantic error score must be a decimal value, not an integer [1997,Trekkies,86,Documentary,PG,7,Roger Nygard,Walter Koenig,DeForest Kelley,James Doohan]Movies1997.csv 8
-semantic error score must be a decimal value, not an integer [1997,Kundun,134,Biography,PG-13,7,Martin Scorsese,Tenzin Thuthob Tsarong,Tulku Jamyang Kunga Tenzin,Tencho Gyalpo]Movies1997.csv 16
-semantic error score must be a decimal value, not an integer [1997,The Postman,177,Action,R,6,Kevin Costner,Olivia Williams,Brian Anthony Wilson,Larenz Tate]Movies1997.csv 31
-semantic error score must be a decimal value, not an integer [1997,Seven Years in Tibet,136,Adventure,PG-13,7,Jean-Jacques Annaud,Brad Pitt,Mako,Victor Wong]Movies1997.csv 39
-semantic error score must be a decimal value, not an integer [1997,Austin Powers: International Man of Mystery,68,Comedy,PG-13,7,Jay Roach,Will Ferrell,Charles Napier,Robert Wagner]Movies1997.csv 58
-semantic error score must be a decimal value, not an integer [1998,Zero Effect,116,Comedy,R,7,Jake Kasdan,Kim Dickens,Ryan O'Neal,Angela Featherstone]Movies1998.csv 9
-semantic error score must be a decimal value, not an integer [1998,The Newton Boys,123,Action,PG-13,6,Richard Linklater,Matthew McConaughey,Lew Temple,Dwight Yoakam]Movies1998.csv 20
-semantic error score must be a decimal value, not an integer [1998,Home Fries,91,Comedy,PG-13,5,Dean Parisot,Catherine O'Hara,Jake Busey,Shelley Duvall]Movies1998.csv 22
-semantic error score must be a decimal value, not an integer [1998,Deep Rising,106,Action,R,6,Stephen Sommers,Djimon Hounsou,Jason Flemyng,Wes Studi]Movies1998.csv 24
-semantic error score must be a decimal value, not an integer [1998,Dead Man on Campus,96,Comedy,R,6,Alan Cohn,Alyson Hannigan,Linda Cardellini,Poppy Montgomery]Movies1998.csv 27
-semantic error score must be a decimal value, not an integer [1998,One True Thing,127,Drama,R,7,Carl Franklin,Meryl Streep,William Hurt,Tom Everett Scott]Movies1998.csv 41
-semantic error score must be a decimal value, not an integer [1998,The Object of My Affection,111,Comedy,R,6,Nicholas Hytner,Liam Aiken,Tim Daly,Kali Rocha]Movies1998.csv 45
-semantic error score must be a decimal value, not an integer [1998,Sphere,134,Drama,PG-13,6,Barry Levinson,Peter Coyote,James Pickens Jr.,Huey Lewis]Movies1998.csv 51
-semantic error score must be a decimal value, not an integer [1998,Out of Sight,123,Crime,R,7,Steven Soderbergh,Don Cheadle,Albert Brooks,Keith Hudson]Movies1998.csv 52
-semantic error score must be a decimal value, not an integer [1998,What Dreams May Come,113,Drama,PG-13,7,Vincent Ward,Robin Williams,Annabella Sciorra,Rosalind Chao]Movies1998.csv 62
-semantic error score must be a decimal value, not an integer [1998,Ever After: A Cinderella Story,121,Comedy,PG-13,7,Andy Tennant,Anjelica Huston,Dougray Scott,Jeanne Moreau]Movies1998.csv 67
-semantic error score must be a decimal value, not an integer [1998,The X Files,121,Drama,PG-13,7,Rob Bowman,Martin Landau,Mitch Pileggi,Jeffrey DeMunn]Movies1998.csv 73
-semantic error score must be a decimal value, not an integer [1998,The Prince of Egypt,99,Adventure,PG,7,Brenda Chapman,Martin Short,Aria Noelle Curzon,Eden Riegel]Movies1998.csv 79
-semantic error score must be a decimal value, not an integer [1999,Jesus' Son,107,Drama,R,7,Alison Maclean,Billy Crudup,Samantha Morton,Mark Webber]Movies1999.csv 10
+semantic error invalid score [1996,Happy Gilmore,92,Comedy,PG-13,7,Dennis Dugan,Adam Sandler,Kevin Nealon,Frances Bay]Movies1996.csv 51
+semantic error invalid score [1996,The Cable Guy,96,Comedy,PG-13,6,Ben Stiller,Matthew Broderick,Janeane Garofalo,Andy Dick]Movies1996.csv 62
+multiple semantic errors invalid year, Invalid duration, invalid score [2996,Broken Arrow,900,Action,R,60,John Woo,Delroy Lindo,Samantha Mathis,Bob Gunton]Movies1996.csv 66
+semantic error invalid score [1997,I Married a Strange Person!,75,Animation,R,7,Bill Plympton,Charis Michelsen,Bill Martone,Richard Spore]Movies1997.csv 3
+semantic error invalid score [1997,Dream with the Fishes,97,Comedy,R,7,Finn Taylor,David Arquette,Cathy Moriarty,Kathryn Erbe]Movies1997.csv 5
+semantic error invalid score [1997,Trekkies,86,Documentary,PG,7,Roger Nygard,Walter Koenig,DeForest Kelley,James Doohan]Movies1997.csv 8
+semantic error invalid score [1997,Kundun,134,Biography,PG-13,7,Martin Scorsese,Tenzin Thuthob Tsarong,Tulku Jamyang Kunga Tenzin,Tencho Gyalpo]Movies1997.csv 16
+semantic error invalid score [1997,The Postman,177,Action,R,6,Kevin Costner,Olivia Williams,Brian Anthony Wilson,Larenz Tate]Movies1997.csv 31
+semantic error invalid score [1997,Seven Years in Tibet,136,Adventure,PG-13,7,Jean-Jacques Annaud,Brad Pitt,Mako,Victor Wong]Movies1997.csv 39
+semantic error invalid score [1997,Austin Powers: International Man of Mystery,68,Comedy,PG-13,7,Jay Roach,Will Ferrell,Charles Napier,Robert Wagner]Movies1997.csv 58
+semantic error invalid score [1998,Zero Effect,116,Comedy,R,7,Jake Kasdan,Kim Dickens,Ryan O'Neal,Angela Featherstone]Movies1998.csv 9
+semantic error invalid score [1998,The Newton Boys,123,Action,PG-13,6,Richard Linklater,Matthew McConaughey,Lew Temple,Dwight Yoakam]Movies1998.csv 20
+semantic error invalid score [1998,Home Fries,91,Comedy,PG-13,5,Dean Parisot,Catherine O'Hara,Jake Busey,Shelley Duvall]Movies1998.csv 22
+semantic error invalid score [1998,Deep Rising,106,Action,R,6,Stephen Sommers,Djimon Hounsou,Jason Flemyng,Wes Studi]Movies1998.csv 24
+semantic error invalid score [1998,Dead Man on Campus,96,Comedy,R,6,Alan Cohn,Alyson Hannigan,Linda Cardellini,Poppy Montgomery]Movies1998.csv 27
+semantic error invalid score [1998,One True Thing,127,Drama,R,7,Carl Franklin,Meryl Streep,William Hurt,Tom Everett Scott]Movies1998.csv 41
+semantic error invalid score [1998,The Object of My Affection,111,Comedy,R,6,Nicholas Hytner,Liam Aiken,Tim Daly,Kali Rocha]Movies1998.csv 45
+semantic error invalid score [1998,Sphere,134,Drama,PG-13,6,Barry Levinson,Peter Coyote,James Pickens Jr.,Huey Lewis]Movies1998.csv 51
+semantic error invalid score [1998,Out of Sight,123,Crime,R,7,Steven Soderbergh,Don Cheadle,Albert Brooks,Keith Hudson]Movies1998.csv 52
+semantic error invalid score [1998,What Dreams May Come,113,Drama,PG-13,7,Vincent Ward,Robin Williams,Annabella Sciorra,Rosalind Chao]Movies1998.csv 62
+semantic error invalid score [1998,Ever After: A Cinderella Story,121,Comedy,PG-13,7,Andy Tennant,Anjelica Huston,Dougray Scott,Jeanne Moreau]Movies1998.csv 67
+semantic error invalid score [1998,The X Files,121,Drama,PG-13,7,Rob Bowman,Martin Landau,Mitch Pileggi,Jeffrey DeMunn]Movies1998.csv 73
+semantic error invalid score [1998,The Prince of Egypt,99,Adventure,PG,7,Brenda Chapman,Martin Short,Aria Noelle Curzon,Eden Riegel]Movies1998.csv 79
+semantic error invalid score [1999,Jesus' Son,107,Drama,R,7,Alison Maclean,Billy Crudup,Samantha Morton,Mark Webber]Movies1999.csv 10
 semantic error Invalid genre [1999,Crazy in Alabama,111,Komedy,PG-13,6.3,Antonio Banderas,Meat Loaf,,Noah Emmerich]Movies1999.csv 12
 multiple semantic errors invalid year, missing duration, missing genre [l999,A Dog of Flanders,,,PG,6.3,Kevin Brodie,Bruce McGill,Cheryl Ladd,Jack Warden]Movies1999.csv 15
-semantic error score must be a decimal value, not an integer [1999,Light It Up,99,Drama,R,6,Craig Bolotin,Rosario Dawson,Vanessa Williams,Robert Ri'chard]Movies1999.csv 28
+semantic error invalid score [1999,Light It Up,99,Drama,R,6,Craig Bolotin,Rosario Dawson,Vanessa Williams,Robert Ri'chard]Movies1999.csv 28
 multiple semantic errors invalid year, Invalid duration [2999,Foolish,384,Comedy,R,4.3,Dave Meyers,,Clifton Powell,Marla Gibbs]Movies1999.csv 29
-semantic error score must be a decimal value, not an integer [1999,Pushing Tin,124,Comedy,R,6,Mike Newell,Angelina Jolie Pitt,Kurt Fuller,Jake Weber]Movies1999.csv 32
+semantic error invalid score [1999,Pushing Tin,124,Comedy,R,6,Mike Newell,Angelina Jolie Pitt,Kurt Fuller,Jake Weber]Movies1999.csv 32
 semantic error Invalid genre [1999,Snow Falling on Cedars,127,Druma,PG-13,6.8,Scott Hicks,Rick Yune,Reeve Carney,Daniel von Bargen]Movies1999.csv 51
-semantic error score must be a decimal value, not an integer [1999,The Corruptor,110,Action,R,6,James Foley,Byron Mann,Paul Ben-Victor,Kim Chan]Movies1999.csv 53
-semantic error score must be a decimal value, not an integer [1999,Doug's 1st Movie,77,Animation,G,5,Maurice Joyce,Frank Welker,Constance Shulman,Alice Playten]Movies1999.csv 61
-semantic error score must be a decimal value, not an integer [1999,Stir of Echoes,99,Horror,R,7,David Koepp,Illeana Douglas,Kathryn Erbe,Lusia Strus]Movies1999.csv 62
-semantic error score must be a decimal value, not an integer [1999,Magnolia,188,Drama,R,8,Paul Thomas Anderson,Patton Oswalt,Neil Flynn,Jim Meskimen]Movies1999.csv 65
-semantic error score must be a decimal value, not an integer [1999,The Iron Giant,90,Action,PG,8,Brad Bird,Vin Diesel,Harry Connick Jr.,M. Emmet Walsh]Movies1999.csv 67
-semantic error score must be a decimal value, not an integer [1999,Mystery Men,121,Action,PG-13,6,Kinka Usher,Janeane Garofalo,Wes Studi,Eddie Izzard]Movies1999.csv 76
-semantic error score must be a decimal value, not an integer [1999,Superstar,81,Comedy,PG-13,5,Bruce McCulloch,Will Ferrell,Elaine Hendrix,Molly Shannon]Movies1999.csv 77
+semantic error invalid score [1999,The Corruptor,110,Action,R,6,James Foley,Byron Mann,Paul Ben-Victor,Kim Chan]Movies1999.csv 53
+semantic error invalid score [1999,Doug's 1st Movie,77,Animation,G,5,Maurice Joyce,Frank Welker,Constance Shulman,Alice Playten]Movies1999.csv 61
+semantic error invalid score [1999,Stir of Echoes,99,Horror,R,7,David Koepp,Illeana Douglas,Kathryn Erbe,Lusia Strus]Movies1999.csv 62
+semantic error invalid score [1999,Magnolia,188,Drama,R,8,Paul Thomas Anderson,Patton Oswalt,Neil Flynn,Jim Meskimen]Movies1999.csv 65
+semantic error invalid score [1999,The Iron Giant,90,Action,PG,8,Brad Bird,Vin Diesel,Harry Connick Jr.,M. Emmet Walsh]Movies1999.csv 67
+semantic error invalid score [1999,Mystery Men,121,Action,PG-13,6,Kinka Usher,Janeane Garofalo,Wes Studi,Eddie Izzard]Movies1999.csv 76
+semantic error invalid score [1999,Superstar,81,Comedy,PG-13,5,Bruce McCulloch,Will Ferrell,Elaine Hendrix,Molly Shannon]Movies1999.csv 77
 semantic error Invalid Rating [1999,Random Hearts,133,Drama,RRR,5.1,Sydney Pollack,Harrison Ford,Kristin Scott Thomas,Bill Cobbs]Movies1999.csv 79
 multiple semantic errors invalid year, missing rating [-1999,The Bone Collector,118,Crime,,6.7,Phillip Noyce,Denzel Washington,Angelina Jolie Pitt,Leland Orser]Movies1999.csv 102
 semantic error Invalid genre [1999,The Thomas Crown Affair,113,Krime,R,6.8,John McTiernan,Mark Margolis,Faye Dunaway,Denis Leary]Movies1999.csv 105
 semantic error missing title [1999,,102,Adventure,PG,7.3,Dean Parisot,Alan Rickman,Enrico Colantoni,Robin Sachs]Movies1999.csv 106
-semantic error score must be a decimal value, not an integer [1999,American Pie,95,Comedy,R,7,Paul Weitz,Alyson Hannigan,Shannon Elizabeth,Natasha Lyonne]Movies1999.csv 114
+semantic error invalid score [1999,American Pie,95,Comedy,R,7,Paul Weitz,Alyson Hannigan,Shannon Elizabeth,Natasha Lyonne]Movies1999.csv 114

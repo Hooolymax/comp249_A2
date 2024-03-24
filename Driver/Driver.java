@@ -78,6 +78,13 @@ public class Driver {
         PrintWriter movieWriter = null;
         
 
+        String[]Genres={
+            "musical", "comedy", "animation", "adventure", "drama", "crime", 
+            "biography", "horror", "action", "documentary", "fantasy", "mystery",
+            "sci-fi", "family", "western", "romance", "thriller"
+        };
+        int genreCount=0;
+
 
         try{
             manifestScanner=new Scanner(new FileInputStream(manifestFile));
@@ -96,22 +103,46 @@ public class Driver {
                     
                     Movie[] validMovies = partiateFile(movieFileName);
 
-                    for (int i = 0; i < validMovies.length; i++){
-                        if (validMovies[i] == null){
+                    for (Movie movie:validMovies){
+                        if (movie== null){
                             break;
+
                         }
+
 // need to clear all files
-                        String outputFileName = validMovies[i].getGenres() + ".csv";
+
+                        String genre=movie.getGenres();
+                        String outputFileName = genre + ".csv";
                         String outputFilePath = outputdirectoryPath+"\\" + outputFileName; 
-                        movieWriter = new PrintWriter(new FileOutputStream(outputFilePath, true));
-                        movieWriter.println(validMovies[i].toString());
+
+
+                        // Write movie record
+                        try (PrintWriter writer=new PrintWriter(new FileOutputStream(outputFilePath,true))){
+
+                            writer.println(movie.toString());
+                            writer.flush();
+
+                        }
+
+                   
+
+                        
+
+                        
                         //System.out.println(validMovies[i].toString());
-                        movieWriter.flush();
-                        movieWriter.close();
+                        
                     }
                    
                 }
 
+            }
+
+
+
+            try(PrintWriter manifestWriter=new PrintWriter(new FileOutputStream("outputfiles\\part2_manifest.txt"))){
+                for (String genre:Genres) {
+                    manifestWriter.println(genre + ".csv");
+                }
             }
 
         } catch (FileNotFoundException e) {
@@ -126,9 +157,11 @@ public class Driver {
 
         
 
-        return "part2_manifest.txt";  // returns name of part 2 manifest file
+        return "outputfiles\\part2_manifest.txt";  // returns name of part 2 manifest file
 
     }
+
+
 
 
 
@@ -303,6 +336,17 @@ public class Driver {
 
     }
 
+
+    //Checks if a genre has already been tracked
+
+    private static boolean isGenreTracked(String[] encounteredGenres, String genre, int genreCount) {
+        for (int i = 0; i < genreCount; i++) {
+            if (genre.equals(encounteredGenres[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static String do_part2(String s) {
 
