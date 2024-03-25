@@ -20,14 +20,13 @@
 
 package driver;
 
+
 import java.util.Scanner;
 
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -46,6 +45,8 @@ public class Driver {
     static String inputdirectoryPath ="inputfiles"; 
     static String outputdirectoryPath ="outputfiles"; 
 
+
+
     public static void main(String[] args) {
 
 
@@ -55,7 +56,7 @@ public class Driver {
         
 
         //read the csv files and create the Manifest File
-        createManifestFile(inputdirectoryPath, manifestFilePath);
+        createManifestFile(manifestFilePath, 1);
 
 
 
@@ -63,6 +64,8 @@ public class Driver {
         System.out.println();
         System.out.println("Welcome to Alisa's and Max's program");
         System.out.println();
+
+
 
         // part 1’s manifest file
         String part1_manifest = manifestFilePath;
@@ -72,9 +75,7 @@ public class Driver {
 
         // part 3’s manifest file
         String part3_manifest = do_part2(part2_manifest /* , ... */); // serialize
-        do_part3(part3_manifest /* , ... */); // deserialize
-
-        // and navigate
+        do_part3(part3_manifest /* , ... */); // deserialize and navigate
 
 
         System.out.println("Goodbuy!");
@@ -86,11 +87,21 @@ public class Driver {
 
     }
 
+
+    /**
+     * Partitions movie records in all the input files into CSV files, 
+     * each storing valid movie records from the same genre 
+     * separates movie records with errors into separate file
+     * produces manifest2 file and 17 CSV files containing valid movie records + error file
+     * 
+     * @param manifest1FilePath
+     * @return manifest2FileName
+     */
     public static String do_part1(String manifest1FilePath) {
 
         
         File manifest1File = new File(manifest1FilePath);
-        Scanner manifest1Scanner = null;
+        //Scanner manifest1Scanner = null;
         
 
         String[]Genres={
@@ -98,19 +109,19 @@ public class Driver {
             "biography", "horror", "action", "documentary", "fantasy", "mystery",
             "sci-fi", "family", "western", "romance", "thriller"
         };
+
         int genreCount=0;
 
 
-        try{
-            manifest1Scanner=new Scanner(new FileInputStream(manifest1File));
+        try(Scanner manifest1Scanner=new Scanner(new FileInputStream(manifest1File));){
             
             
-            // clear and create file
+            // clear and create bad movies file
             PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream("outputfiles\\bad_movie_records.txt"));
             badMoviesClearFile.print("");
             badMoviesClearFile.close();
 
-
+            // go through each file to create genre file
             while (manifest1Scanner.hasNextLine()){
                 String movieFileName = manifest1Scanner.nextLine().trim();
 
@@ -137,12 +148,6 @@ public class Driver {
 
                         }
 
-                   
-
-                        
-
-                        
-                        //System.out.println(validMovies[i].toString());
                         
                     }
                    
@@ -160,12 +165,7 @@ public class Driver {
 
         } catch (FileNotFoundException e) {
             System.out.println("Manifest file not found: " + manifest1FilePath);
-        } finally {
-            if (manifest1Scanner != null) {
-                manifest1Scanner.close();
-            }
-            
-        }
+        } 
 
 
         
@@ -178,12 +178,44 @@ public class Driver {
 
 
 
-    //Create the manifest File
-    
-    public static void createManifestFile(String directoryPath, String manifestFileName) {
+   
+    /**
+     * creates 1st, 2nd or 3rd manifest file
+     * @param manifestFileName
+     * @param manifestNumber
+     */
+    public static void createManifestFile(String manifestFileName,int manifestNumber) {
+
+        String suffix;
+        String directoryPath;
+
+
+        switch(manifestNumber){
+            case 1:
+                suffix = ".csv";
+                directoryPath = inputdirectoryPath;
+            break;
+
+            case 2:
+                suffix = ".csv";
+                directoryPath = outputdirectoryPath;
+            break;
+
+            case 3:
+                suffix = ".ser";
+                directoryPath = outputdirectoryPath;
+            break;
+
+            // should not happen
+            default:
+                suffix = "";
+                directoryPath = "";
+                break;
+        }
+
 
         File dir = new File(directoryPath);
-        File[] files = dir.listFiles((dir1, name) -> name.endsWith(".csv"));
+        File[] files = dir.listFiles((dir1, name) -> name.endsWith(suffix));
 
             try (FileWriter writer = new FileWriter(manifestFileName)) {
                 if(files!=null){
@@ -362,6 +394,14 @@ public class Driver {
         return false;
     }
 
+    /**
+     * for all genre files loads a Movie array with records from the file, 
+     * and then serializes the resulting array into a binary file
+     * produces manifest3 file and 17 binary files containing serialized movie arrays
+     * 
+     * @param manifest2FilePath
+     * @return manifest3FileName
+     */
     public static String do_part2(String manifest2FilePath) {
 
         
@@ -389,7 +429,11 @@ public class Driver {
 
         
 
-        // produce part3_manifest.txt 
+            // produce part3_manifest.txt 
+            createManifestFile("inputfiles\\part3_manifest.txt", 3);
+
+
+
 
         } catch (FileNotFoundException e){
             System.out.println("Manifest file not found: " + manifest2FilePath);
@@ -410,10 +454,9 @@ public class Driver {
         File serializedFile = new File(path);
 
         // clear file
-        try{
-        PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream(path));
-        badMoviesClearFile.print("");
-        badMoviesClearFile.close();
+        try(PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream(path));){
+            badMoviesClearFile.print("");
+            badMoviesClearFile.flush();
         } catch (FileNotFoundException e) {}
 
         try(FileOutputStream fileOut = new FileOutputStream(serializedFile); 

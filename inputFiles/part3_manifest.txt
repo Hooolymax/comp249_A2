@@ -1,0 +1,17 @@
+action.ser
+adventure.ser
+animation.ser
+biography.ser
+comedy.ser
+crime.ser
+documentary.ser
+drama.ser
+family.ser
+fantasy.ser
+horror.ser
+musical.ser
+mystery.ser
+romance.ser
+sci-fi.ser
+thriller.ser
+western.ser
