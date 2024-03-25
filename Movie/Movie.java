@@ -83,17 +83,39 @@ public class Movie implements Serializable {
         }
         
 
-       // add missing director
-        this.director = movieRecordFields[6];
+        try{
+            this.director = validateDirector(movieRecordFields[6]);
+        } catch (BadDirectorException e) {
+            exceptions[exceptionCount++] = e;
+        }
 
-        // alisa
-        this.actor1 = validateActor(movieRecordFields[7]);
+        try{
+            this.actor1 = validateActor(movieRecordFields[7]);
+        } catch (BadActorException e) {
+            exceptions[exceptionCount++] = e;
+        }
+        
 
-        // add validate actor
-        this.actor2 = movieRecordFields[8]; 
+        try{
+            this.actor1 = validateActor(movieRecordFields[7]);
+        } catch (BadActorException e) {
+            exceptions[exceptionCount++] = e;
+        }
 
-        // max
-        this.actor3 = movieRecordFields[9];
+        try{
+            this.actor2 = validateActor(movieRecordFields[8]); 
+        } catch (BadActorException e) {
+            exceptions[exceptionCount++] = e;
+        }
+        
+
+        try{
+            this.actor3 = validateActor(movieRecordFields[9]); 
+        } catch (BadActorException e) {
+            exceptions[exceptionCount++] = e;
+        }
+        
+        
 
         // there were exceptions
         if (exceptionCount > 0) {
@@ -305,9 +327,21 @@ public class Movie implements Serializable {
     }
 
 
-    // finish
-    public static String validateActor(String candidateActor){
-        return candidateActor;
+    public static String validateDirector (String candidateDirector) throws BadDirectorException{
+        if (candidateDirector.isEmpty()){
+            throw new BadDirectorException("missing director");
+        } else {
+            return candidateDirector;
+        }
+    }
+
+
+    public static String validateActor (String candidateActor) throws BadActorException{
+        if (candidateActor.isEmpty()){
+            throw new BadActorException("missing actor");
+        } else {
+            return candidateActor;
+        }
     }
 
 

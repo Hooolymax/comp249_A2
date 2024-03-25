@@ -101,16 +101,27 @@ public class Driver {
 
         
         File manifest1File = new File(manifest1FilePath);
-        //Scanner manifest1Scanner = null;
+        
         
 
-        String[]Genres={
+        String[]genres={
             "musical", "comedy", "animation", "adventure", "drama", "crime", 
             "biography", "horror", "action", "documentary", "fantasy", "mystery",
             "sci-fi", "family", "western", "romance", "thriller"
         };
 
-        int genreCount=0;
+        // create empty csv genre files or clear them after restarting the program
+        for (int i= 0; i < genres.length; i++){
+            try(PrintWriter csvFileWriter = new PrintWriter(new FileOutputStream( outputdirectoryPath+"\\" + genres[i] + ".csv"))){
+                csvFileWriter.print("");
+                csvFileWriter.flush();
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occured in " + genres[i] + " file creation");
+            }
+
+        }
+
+        //int genreCount=0;
 
 
         try(Scanner manifest1Scanner=new Scanner(new FileInputStream(manifest1File));){
@@ -156,16 +167,21 @@ public class Driver {
             }
 
 
+            /* 
             // creating 2nd manifest file
             try(PrintWriter manifestWriter=new PrintWriter(new FileOutputStream("inputfiles\\part2_manifest.txt"))){
-                for (String genre:Genres) {
+                for (String genre:genres) {
                     manifestWriter.println(genre + ".csv");
                 }
             }
+            */
 
         } catch (FileNotFoundException e) {
             System.out.println("Manifest file not found: " + manifest1FilePath);
         } 
+
+
+        createManifestFile("part2_manifest.txt", 2);
 
 
         
@@ -417,7 +433,12 @@ public class Driver {
                 // load movies from genre.csv file into array of movie object
                 String fileName = manifest2Scanner.nextLine();
                 String genreOfFile = fileName.substring(0 , fileName.length() - 4);
-                Movie[] moviesInFile = partiateFile(outputdirectoryPath+"\\"+fileName);
+                Movie[] moviesInFile = partiateCSVFile(outputdirectoryPath+"\\"+fileName);
+
+
+
+
+
 
                 if (moviesInFile != null){
                     // serialize them and create genre.ser
@@ -442,14 +463,78 @@ public class Driver {
         return "inputfiles\\part3_manifest.txt"; 
     }
 
+    public static Movie[] partiateCSVFile(String filePath){
+
+        
+        String line;
+        Movie[] movieRecords = new Movie[MAXNUMMOVIEINFILE];
+        int count = 0;
+        
+
+        //String movieFilePath = inputdirectoryPath+"\\"+fileName; 
+        //String badMoviesoutputFilePath = outputdirectoryPath+"\\" + "bad_movie_records.txt"; 
+
+        //File movieFile = new File(filePath);
+        //Scanner movieFileScanner = null;
+        //PrintWriter badMovieWriter = null;
+
+        try(Scanner movieFileScanner = new Scanner(new FileInputStream(filePath))){
+
+        
+            // file is empty
+            if (!movieFileScanner.hasNextLine()){
+                return null;
+            }
+
+            while(movieFileScanner.hasNextLine()){
+
+                line = movieFileScanner.nextLine().trim();
+
+                //Movie [year=1994, title=Hoop Dreams, duration=170, genres=Documentary, 
+                //rating=PG-13, score=8.3, director=Steve James, actor1=William Gates, actor2=Arthur Agee, 
+                //actor3=Isiah Thomas]
+
+                String[] lineParsed = line.split("=");
+                String[] movieFields = new String[10];
+                for (int i = 1; i < lineParsed.length; i++){
+                    movieFields[i-1] = lineParsed[i].split(",")[0];
+                }
+                
+            
+                try{
+                    movieRecords[count] = new Movie(movieFields);
+                    
+
+                
+                } catch (SemanticException e2){
+                    System.out.println("semantic error " + e2.getMessage() + " " + "[" + line + "]"+ " "  + filePath + " line " + count);
+                    
+                }
+
+                count ++;
+            }
+
+            
+            
+            return movieRecords;
+
+
+        } catch (FileNotFoundException e){
+            System.out.println("File " + filePath + " was not found");
+            return null;
+        }
+
+    }
+
+
+
     /**
      * serializes the array of movie objects into a binary file named genre.ser
      * @param movies
      */
     public static void serialize(Movie[] movies, String genre){
 
-        
-
+    
         String path = outputdirectoryPath+"\\"+genre+".ser"; 
         File serializedFile = new File(path);
 
@@ -469,14 +554,41 @@ public class Driver {
             System.out.println("Error occured during the serialization of movies of genre " + genre);
         }
 
+    }
 
+ 
+    /**
+     * deserializes a binary file into the array of movie objects 
+     * @param m
+     * 
+     */
+    /*
+    public static Movie[] deserialize(String fileName){
+
+        try(Scanner )
+       
+
+        
+
+        try(FileOutputStream fileOut = new FileOutputStream(serializedFile); 
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)){
+
+            out.writeObject(movies);
+
+
+        }catch(IOException e){
+            System.out.println("Error occured during the serialization of movies of genre " + genre);
+        }
 
     }
+
+*/
 
 
 
 
     public static void do_part3(String s) {
+
 
 
         // deserealize each file back into movie arrays
