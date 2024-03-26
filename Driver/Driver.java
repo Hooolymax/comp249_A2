@@ -6,10 +6,8 @@
 
 // to fix:
 
-// need to clear all files when restarting a program
+
 // javadoc documentation
-// movie constructor missing fields
-// produce empty csv movie files and hence create manifest file with the same methode as first(going through files in output files)
 
 
 
@@ -30,6 +28,7 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import exceptions.*;
@@ -74,8 +73,9 @@ public class Driver {
         String part2_manifest = do_part1(part1_manifest); // partition
 
         // part 3’s manifest file
-        String part3_manifest = do_part2(part2_manifest /* , ... */); // serialize
-        do_part3(part3_manifest /* , ... */); // deserialize and navigate
+        String part3_manifest = do_part2(part2_manifest); // serialize
+
+        do_part3(part3_manifest); // deserialize and navigate
 
 
         System.out.println("Goodbuy!");
@@ -121,7 +121,6 @@ public class Driver {
 
         }
 
-        //int genreCount=0;
 
 
         try(Scanner manifest1Scanner=new Scanner(new FileInputStream(manifest1File));){
@@ -463,6 +462,14 @@ public class Driver {
         return "inputfiles\\part3_manifest.txt"; 
     }
 
+
+    /**
+     * Processes a csv file containing valid modified movie records 
+     * and partitions it into an array of Movie objects.
+     *
+     * @param filePath 
+     * @return array of valid movie objects. Returns {@code null} if the file was not found.
+     */
     public static Movie[] partiateCSVFile(String filePath){
 
         
@@ -470,13 +477,6 @@ public class Driver {
         Movie[] movieRecords = new Movie[MAXNUMMOVIEINFILE];
         int count = 0;
         
-
-        //String movieFilePath = inputdirectoryPath+"\\"+fileName; 
-        //String badMoviesoutputFilePath = outputdirectoryPath+"\\" + "bad_movie_records.txt"; 
-
-        //File movieFile = new File(filePath);
-        //Scanner movieFileScanner = null;
-        //PrintWriter badMovieWriter = null;
 
         try(Scanner movieFileScanner = new Scanner(new FileInputStream(filePath))){
 
@@ -503,11 +503,9 @@ public class Driver {
             
                 try{
                     movieRecords[count] = new Movie(movieFields);
-                    
-
                 
-                } catch (SemanticException e2){
-                    System.out.println("semantic error " + e2.getMessage() + " " + "[" + line + "]"+ " "  + filePath + " line " + count);
+                } catch (SemanticException e){
+                    System.out.println("error in creating movie from " + line);
                     
                 }
 
@@ -539,9 +537,9 @@ public class Driver {
         File serializedFile = new File(path);
 
         // clear file
-        try(PrintWriter badMoviesClearFile=new PrintWriter(new FileOutputStream(path));){
-            badMoviesClearFile.print("");
-            badMoviesClearFile.flush();
+        try(PrintWriter clearFile=new PrintWriter(new FileOutputStream(path));){
+            clearFile.print("");
+            clearFile.flush();
         } catch (FileNotFoundException e) {}
 
         try(FileOutputStream fileOut = new FileOutputStream(serializedFile); 
@@ -559,43 +557,98 @@ public class Driver {
  
     /**
      * deserializes a binary file into the array of movie objects 
-     * @param m
-     * 
+     * @param filePath to .ser file to be deserialized
+     * @return array of Movie objects
      */
-    /*
-    public static Movie[] deserialize(String fileName){
+    
+    public static Movie[] deserializeFile(String filePath){
 
-        try(Scanner )
-       
+        Movie[] movies = null;
+
+        try(FileInputStream serFileIn = new FileInputStream(filePath); 
+        ObjectInputStream in = new ObjectInputStream(serFileIn)){
+
+
+
+            movies = (Movie[]) in.readObject();
+
+
+        } catch(FileNotFoundException e){
+            System.out.println(filePath + " file was not found");
+        } catch(IOException e1){
+            System.out.println("an error occured during the deserialization of " + filePath);
+        } catch (ClassNotFoundException e2){
+            System.out.println("Class not found");
+        } 
+            
+        return movies;
+        
 
         
 
-        try(FileOutputStream fileOut = new FileOutputStream(serializedFile); 
-            ObjectOutputStream out = new ObjectOutputStream(fileOut)){
-
-            out.writeObject(movies);
-
-
-        }catch(IOException e){
-            System.out.println("Error occured during the serialization of movies of genre " + genre);
-        }
-
     }
 
-*/
 
 
 
 
-    public static void do_part3(String s) {
+    /**
+     * reconstructs the serialized array objects from the binary files and 
+     * creates a 2D array of all movie objects
+     * @param manifest3FilePath
+     * @return a 2D object of type Movie[][]
+     */
+    public static Movie[][] do_part3(String manifest3FilePath) {
 
-
+        Movie[][] allMovies = null;
 
         // deserealize each file back into movie arrays
+        try(Scanner manifest3Scanner = new Scanner(new FileInputStream(manifest3FilePath));){
+
+            
+
+            // go through each ser file 
+            while(manifest3Scanner.hasNextLine()){
+
+                
+                String fileName = manifest3Scanner.nextLine();
+                
+                Movie[] movies = deserializeFile(outputdirectoryPath+"\\"+fileName);
+
+                if (movies == null){
+                    System.out.println(fileName + " is empty");
+                } else{
+
+                    System.out.println(fileName + movies[0].toString());
+
+                    /* 
+                    for(int i = 0; i<movies.length; i++){
+
+
+
+                        if (movies[i] == null){
+                            break;    
+                        }
+
+                        System.out.println(movies[i].toString());
+
+                    }
+                    */
+
+                }
+
+            } 
+
+
+        }catch (FileNotFoundException e){
+            System.out.println("Manifest3 file was not found");
+        }
 
         // create Movie[][] from all these arrays
 
-        return;
+        return allMovies;
+
+        
     }
 
 
