@@ -555,11 +555,7 @@ public class Driver {
     }
 
  
-    /**
-     * deserializes a binary file into the array of movie objects 
-     * @param filePath to .ser file to be deserialized
-     * @return array of Movie objects
-     */
+    /* 
     
     public static Movie[] deserializeFile(String filePath){
 
@@ -587,7 +583,7 @@ public class Driver {
         
 
     }
-
+    */
 
 
 
@@ -601,53 +597,10 @@ public class Driver {
     
     public static Movie[][] do_part3(String manifest3FilePath) {
 
-        Movie[][] allMovies = null;
-
-        // deserealize each file back into movie arrays
-        try(Scanner manifest3Scanner = new Scanner(new FileInputStream(manifest3FilePath));){
-
-            
-
-            // go through each ser file 
-            while(manifest3Scanner.hasNextLine()){
-
-                
-                String fileName = manifest3Scanner.nextLine();
-                
-                Movie[] movies = deserializeFile(outputdirectoryPath+"\\"+fileName);
-
-                if (movies == null){
-                    System.out.println(fileName + " is empty");
-                } else{
-
-                    System.out.println(fileName + movies[0].toString());
-
-                    /* 
-                    for(int i = 0; i<movies.length; i++){
+        
 
 
-
-                        if (movies[i] == null){
-                            break;    
-                        }
-
-                        System.out.println(movies[i].toString());
-
-                    }
-                    
-
-                }
-
-            } 
-
-
-        }catch (FileNotFoundException e){
-            System.out.println("Manifest3 file was not found");
-        }
-
-        // create Movie[][] from all these arrays
-
-        return allMovies;
+        return null;
 
         
     }
