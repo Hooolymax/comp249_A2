@@ -35,6 +35,7 @@ public class Driver {
     static String outputdirectoryPath ="outputfiles"; 
     private static int currentGenre=0;
     private static int[]Position;
+    static Scanner sc1=new Scanner(System.in);
 
     static String[] genres = {
         "musical", "comedy", "animation", "adventure", "drama", "crime", 
@@ -696,7 +697,7 @@ public class Driver {
 
         Position=new int[all_movies.length];
 
-        Scanner sc1=new Scanner(System.in);
+        
         String choice;
 
         do{
@@ -758,7 +759,7 @@ public class Driver {
      */
     public static void selectGenre(Movie[][] all_movies) {
 
-        Scanner sc4 = new Scanner(System.in);
+       
 
         System.out.println("------------------------------");
         System.out.println("Genre Sub-Menu");
@@ -773,7 +774,7 @@ public class Driver {
         System.out.println("------------------------------");
         System.out.print("Enter Your Choice: ");
 
-        int choice = sc4.nextInt();
+        int choice = sc1.nextInt();
 
         // zero-based genre
         if (choice > 0 && choice <= genres.length) {
@@ -794,10 +795,10 @@ public class Driver {
     * @param all_movies The 2D array containing arrays of Movie objects for each genre
     */
     private static void navigateGenre(Movie[][] all_movies) {
-        Scanner sc5 = new Scanner(System.in);
+        
         System.out.println("Navigating " + getGenre(currentGenre) + " movies (" + (all_movies[currentGenre] != null ? all_movies[currentGenre].length : 0) + ")");
         System.out.print("Enter Your Choice: ");
-        int n = sc5.nextInt();
+        int n = sc1.nextInt();
 
         if (n == 0) {
             return;
