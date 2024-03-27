@@ -599,7 +599,7 @@ public class Driver {
      * @return a 2D object of type Movie[][]
      */
     
-   /* public static Movie[][] do_part3(String manifest3FilePath) {
+    public static Movie[][] do_part3(String manifest3FilePath) {
 
         Movie[][] allMovies = null;
 
@@ -651,7 +651,7 @@ public class Driver {
 
         
     }
-*/
+
 
 
 
