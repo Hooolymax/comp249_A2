@@ -585,7 +585,7 @@ public class Driver {
                     System.out.println("Error deserializing "+ fileName);
                     e.printStackTrace();
                 }
-            }
+            }  
 
 
         }catch(FileNotFoundException e){
@@ -867,11 +867,11 @@ public class Driver {
         }
 
         if (n == 0) {
-            return; // Exit viewing session and return to main menu.
+            return; // return to main menu.
         }
     
-        // Calculate the end position. It should be current position + n.
-        // If it exceeds the array length, set it to the length of the movies array.
+        // Calculate the end position.
+        
         int endPosition = currentPosition + n;
         if (endPosition >= movies.length) {
             System.out.println("EOF has been reached");
@@ -911,8 +911,8 @@ public class Driver {
             return; // Exit viewing session and return to main menu.
         }
     
-        // Calculate the start position. It should be current position - |n|.
-        // If it is less than 0, set it to 0.
+        // Calculate the start position. 
+        
         int startPosition = currentPosition - Math.abs(n);
         if (startPosition < 0) {
             System.out.println("BOF has been reached");
