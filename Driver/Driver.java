@@ -599,8 +599,15 @@ public class Driver {
 
     }
 
+
+
+
+
+
+    
  
-    /* 
+    /**
+     * Deserializes the array of Movie objects from binary files  in part3_manifest.txt.
     
      * @param manifest3FilePath Path to the manifest file containing the list of binary files.
      * @return 2D array of Movie objects, each row represents a genre.
@@ -754,7 +761,7 @@ public class Driver {
             return "Invalid Genre";
         }
     }
-   
+
 
 
 
