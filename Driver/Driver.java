@@ -40,9 +40,9 @@ public class Driver {
     static Scanner sc3=new Scanner(System.in);
 
     static String[] genres = {
-        "musical", "comedy", "animation", "adventure", "drama", "crime", 
-        "biography", "horror", "action", "documentary", "fantasy", "mystery",
-        "sci-fi", "family", "western", "romance", "thriller"
+        "action","adventure","animation", "biography","comedy", "crime",  "documentary",  "drama", "family",
+          "fantasy","horror", "musical", "mystery","romance",
+        "sci-fi",  "thriller" ,"western"
     };
 
 
@@ -681,6 +681,31 @@ public class Driver {
     }
 
 
+   /**
+    * Counts the number of non-null objects in an array.
+    *
+    *
+    * @param movies The array of objects to be counted.
+    * @return The count of non-null objects in the array.
+    */
+
+    private static int countNonNullMovies(Movie[] movies) {
+        int count = 0;
+        for (Movie movie : movies) {
+            if (movie != null) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+
+
+
+
+
+
+
 
 
 
@@ -707,8 +732,10 @@ public class Driver {
             System.out.println("                Main Menu               ");
             System.out.println("----------------------------------------");
             System.out.println("");
+
+            int movieCount = all_movies[currentGenre] != null ? countNonNullMovies(all_movies[currentGenre]) : 0;
             System.out.println("s Select a movie array to navigate");
-            System.out.println("n Navigate "+ getGenre(currentGenre)+ " movies (" + (all_movies[currentGenre]!=null?all_movies[currentGenre].length:0) + " records)");
+            System.out.println("n Navigate "+ getGenre(currentGenre)+ " movies (" + movieCount + " records)");
             System.out.println("x Exit");
             System.out.println("");
             System.out.println("----------------------------------------");
@@ -767,8 +794,9 @@ public class Driver {
         System.out.println("Genre Sub-Menu");
         System.out.println("------------------------------");
 
+        
         for (int i = 0; i < genres.length; i++) {
-            int movieCount = (all_movies[i] != null) ? all_movies[i].length : 0;
+            int movieCount = (all_movies[i] != null) ? countNonNullMovies(all_movies[i]) : 0;
             System.out.println((i + 1) + " " + genres[i] + " (" + movieCount + " movies)");
         }
 
@@ -797,8 +825,12 @@ public class Driver {
     * @param all_movies The 2D array containing arrays of Movie objects for each genre
     */
     private static void navigateGenre(Movie[][] all_movies) {
+
         
-        System.out.println("Navigating " + getGenre(currentGenre) + " movies (" + (all_movies[currentGenre] != null ? all_movies[currentGenre].length : 0) + ")");
+        
+        System.out.println("Navigating " + getGenre(currentGenre) + " movies (" +
+    (all_movies[currentGenre] != null ? countNonNullMovies(all_movies[currentGenre]) : 0) + ")");
+
         System.out.print("Enter Your Choice: ");
         int n = sc3.nextInt();
 
@@ -807,11 +839,16 @@ public class Driver {
         }
 
         int currentPosition = Position[currentGenre];
+
+        try{
         if (n > 0) {
             displayMoviesBelow(all_movies[currentGenre], currentPosition, n);
         } else {
             displayMoviesAbove(all_movies[currentGenre], currentPosition, n);
         }
+    } catch(NoMoviesToDisplayException e){
+        System.out.println(e.getMessage());
+    }
     }
 
 
@@ -822,21 +859,33 @@ public class Driver {
     * @param movies The array of Movie objects 
     * @param currentPosition The current position in the array 
     * @param n The number of steps to move downwards the start of the array
+     * @throws NoMoviesToDisplayException 
     */
-    private static void displayMoviesBelow(Movie[] movies, int currentPosition, int n) {
+    private static void displayMoviesBelow(Movie[] movies, int currentPosition, int n) throws NoMoviesToDisplayException {
+        if (movies == null || countNonNullMovies(movies) == 0) {
+            throw new NoMoviesToDisplayException("No movies to display.");
+        }
 
-        int endPosition = Math.min(movies.length, currentPosition + n);
-
-        for (int i = currentPosition + 1; i < endPosition; i++) {
+        if (n == 0) {
+            return; // Exit viewing session and return to main menu.
+        }
+    
+        // Calculate the end position. It should be current position + n.
+        // If it exceeds the array length, set it to the length of the movies array.
+        int endPosition = currentPosition + n;
+        if (endPosition >= movies.length) {
+            System.out.println("EOF has been reached");
+            endPosition = movies.length;
+        }
+    
+        // Display the current position movie record first, then display |n| - 1 records below it.
+        for (int i = currentPosition; i < endPosition; i++) {
             if (movies[i] != null) {
                 System.out.println(movies[i]);
             }
         }
-
-        if (endPosition == movies.length) {
-            System.out.println("EOF has been reached");
-        }
-
+    
+        // Update the position to the last displayed record.
         Position[currentGenre] = endPosition - 1;
     }
 
@@ -849,22 +898,39 @@ public class Driver {
     * @param movies The array of Movie objects 
     * @param currentPosition The current position in the array 
     * @param n The number of steps to move upwards towards the start of the array
+     * @throws NoMoviesToDisplayException 
     */
-    private static void displayMoviesAbove(Movie[] movies, int currentPosition, int n) {
+    private static void displayMoviesAbove(Movie[] movies, int currentPosition, int n) throws NoMoviesToDisplayException {
 
-        int startPosition = Math.max(0, currentPosition + n); // n is negative
 
-        for (int i = startPosition; i < currentPosition; i++) {
+        if (movies == null || countNonNullMovies(movies) == 0) {
+            throw new NoMoviesToDisplayException("No movies to display.");
+        }
+
+        if (n == 0) {
+            return; // Exit viewing session and return to main menu.
+        }
+    
+        // Calculate the start position. It should be current position - |n|.
+        // If it is less than 0, set it to 0.
+        int startPosition = currentPosition - Math.abs(n);
+        if (startPosition < 0) {
+            System.out.println("BOF has been reached");
+            startPosition = 0;
+        }
+    
+        // Display the current position movie record first, then display |n| - 1 records above it.
+        for (int i = currentPosition; i >= startPosition; i--) {
             if (movies[i] != null) {
                 System.out.println(movies[i]);
             }
         }
+    
+        // Update the position to the first displayed record.
+        Position[currentGenre] = startPosition;
 
-        if (startPosition == 0) {
-            System.out.println("BOF has been reached");
-        }
 
-    }
+}
 
 
 }
