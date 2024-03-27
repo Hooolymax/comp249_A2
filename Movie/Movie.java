@@ -1,5 +1,5 @@
 // -----------------------------------------------------
-// Assignment 2
+// COMP249 Assignment 2 due 27.03.2024
 // Written by: Alisa Ignatina 40267100 and Jinghao Lai 40041316 
 // -----------------------------------------------------
 
@@ -9,7 +9,15 @@ import java.io.Serializable;
 
 import exceptions.*;
 
-
+/**
+ * Represents a movie record with 10 attributes 
+ * (year, title, duration, genres, rating, score, director, and actors). 
+ * The class is designed to handle semantic validation of movie attributes and throw 
+ * appropriate exceptions for invalid data.
+ *
+ * @author Alisa Ignatina 40267100 and Jinghao Lai 40041316 
+ * @since 2024-03-27
+ */
 public class Movie implements Serializable {
 
     private int year;
@@ -44,8 +52,8 @@ public class Movie implements Serializable {
     /**
      * constructor which validates movie fields before creating Movie object
      * @param movieRecordFields - array of 10 candidate fields all in format String
-     * @throws SemanticException
-     * @throws MultipleSemanticExceptions
+     * @throws SemanticException if only 1 exception occured during movie object construction
+     * @throws MultipleSemanticExceptions if more than 1 exception occured - throws an array of exceptions
      */
     public Movie(String[] movieRecordFields) throws SemanticException, MultipleSemanticExceptions {
         

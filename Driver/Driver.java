@@ -1,5 +1,5 @@
 // -----------------------------------------------------
-// Assignment 2
+// COMP249 Assignment 2 due 27.03.2024
 // Written by: Alisa Ignatina 40267100 and Jinghao Lai 40041316 
 // -----------------------------------------------------
 
@@ -24,7 +24,12 @@ import java.io.ObjectOutputStream;
 import exceptions.*;
 import movie.Movie;
 
-
+/**
+ * 
+ * 
+ * @author Alisa Ignatina 40267100 and Jinghao Lai 40041316 
+ * @since 2024-03-27
+ */
 public class Driver {
 
     
@@ -45,6 +50,11 @@ public class Driver {
 
 
 
+    /**
+     * 
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
 
 
@@ -63,12 +73,6 @@ public class Driver {
         System.out.println("Welcome to Alisa's and Max's program");
         System.out.println();
 
-
-        
-
-
-
-        
 
 
 
