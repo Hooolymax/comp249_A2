@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import exceptions.*;
 
+
 public class Movie implements Serializable {
 
     private int year;
@@ -23,6 +24,10 @@ public class Movie implements Serializable {
     private String actor2;
     private String actor3;
 
+
+    /**
+     * default constructor
+     */
     public Movie(){
         this.year = 0;
         this.title = "n/a";
@@ -36,6 +41,13 @@ public class Movie implements Serializable {
         this.actor3 = "n/a";
     }
 
+
+    /**
+     * constructor which validates movie fields before creating Movie object
+     * @param movieRecordFields - array of 10 candidate fields all in format String
+     * @throws SemanticException
+     * @throws MultipleSemanticExceptions
+     */
     public Movie(String[] movieRecordFields) throws SemanticException, MultipleSemanticExceptions {
         
         SemanticException[] exceptions = new SemanticException[10];
@@ -129,7 +141,9 @@ public class Movie implements Serializable {
 
     
 
-
+    /**
+     * copy constructor
+     * */
     public Movie(Movie aMovie) {
         this.year = aMovie.year;
         this.title = aMovie.title;
@@ -156,14 +170,7 @@ public class Movie implements Serializable {
         }
     }
 
-    public static boolean notInteger(String str) {
-        try {
-            Integer.parseInt(str);
-            return true; // String is an integer
-        } catch (NumberFormatException e) {
-            return false; // String is not an integer
-        }
-    }
+
 
     public int getYear() {
         return year;
@@ -244,6 +251,7 @@ public class Movie implements Serializable {
     public void setActor3(String actor3) {
         this.actor3 = actor3;
     }
+
 
     /**
      * Validates the movie year which must be between 1990 and 2024
@@ -327,6 +335,12 @@ public class Movie implements Serializable {
     }
 
 
+    /**
+     * validates director
+     * @param candidateDirector
+     * @return validated director
+     * @throws BadDirectorException if missing director
+     */
     public static String validateDirector (String candidateDirector) throws BadDirectorException{
         if (candidateDirector.isEmpty()){
             throw new BadDirectorException("missing director");
@@ -336,6 +350,12 @@ public class Movie implements Serializable {
     }
 
 
+    /**
+     * validates actor
+     * @param candidateActor
+     * @return validated director
+     * @throws BadActorException if missing actor
+     */
     public static String validateActor (String candidateActor) throws BadActorException{
         if (candidateActor.isEmpty()){
             throw new BadActorException("missing actor");
@@ -347,8 +367,13 @@ public class Movie implements Serializable {
 
 
 
-    //validates the movie duration: an integer from 30 through 300 minutes.
-
+   
+    /**
+     * validates the movie duration: an integer from 30 through 300 minutes.
+     * @param candidateDuration
+     * @return valid duration
+     * @throws BadDurationException if invalid duration
+     */
     public static int validateDuration(String candidateDuration)throws BadDurationException{
 
 
@@ -381,8 +406,13 @@ public class Movie implements Serializable {
 
 
 
-    //validates the movie genres
-
+    
+    /**
+     * validates the movie genres
+     * @param candidateGenres
+     * @return valid genre
+     * @throws BadGenreException
+     */
     public static String validateGenres(String candidateGenres)throws BadGenreException{
 
         String validGenres[]={"musical", "comedy", "animation", "adventure", "drama", "crime", "biography",
@@ -428,10 +458,12 @@ public class Movie implements Serializable {
 
 
 
-    //validates the movie rating
-
-
-
+    /**
+     * validates the movie rating
+     * @param candidateRating
+     * @return valid rating
+     * @throws BadRatingException
+     */
     public static String validateRating(String candidateRating)throws BadRatingException{
 
         String validRatings[]={"PG", "Unrated", "G", "R", "PG-13", "NC-17"};
@@ -452,9 +484,9 @@ public class Movie implements Serializable {
                 }
             }
 
-                if(!isValidRating){
-                    throw new BadRatingException("Invalid Rating");
-                }
+            if(!isValidRating){
+                throw new BadRatingException("Invalid Rating");
+            }
 
 
             
@@ -470,7 +502,9 @@ public class Movie implements Serializable {
 
     }
 
-    
+    /**
+     * converts movie object to string
+     */
     public String toString() {
         return "Movie [year=" + year + ", title=" + title + ", duration=" + duration + ", genres=" + genres
                 + ", rating=" + rating + ", score=" + score + ", director=" + director + ", actor1=" + actor1

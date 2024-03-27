@@ -4,18 +4,6 @@
 // -----------------------------------------------------
 
 
-// to fix:
-
-// need to clear all files when restarting a program
-// javadoc documentation
-// movie constructor missing fields
-// produce empty csv movie files and hence create manifest file with the same methode as first(going through files in output files)
-
-
-
-
-
-
 
 
 package driver;
@@ -90,38 +78,14 @@ public class Driver {
         String part2_manifest = do_part1(part1_manifest); // partition
 
         // part 3’s manifest file
-        String part3_manifest = "inputfiles\\part3_manifest.txt"; // serialize
-        do_part3(part3_manifest /* , ... */); // deserialize and navigate
+        String part3_manifest = do_part2(part2_manifest); // serialize
 
-
-        Movie[][]all_movies=do_part3(part3_manifest);
-
-        //displayAllMovies(all_movies);//
+         
+        Movie[][]all_movies=do_part3(part3_manifest); // deserialize and navigate
 
         navigateMovies(all_movies);
 
 
-
-        
-
-
-        
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-       
 
 
         return;
@@ -164,7 +128,7 @@ public class Driver {
 
         }
 
-        //int genreCount=0;
+        
 
 
         try(Scanner manifest1Scanner=new Scanner(new FileInputStream(manifest1File));){
@@ -209,15 +173,6 @@ public class Driver {
 
             }
 
-
-            /* 
-            // creating 2nd manifest file
-            try(PrintWriter manifestWriter=new PrintWriter(new FileOutputStream("inputfiles\\part2_manifest.txt"))){
-                for (String genre:genres) {
-                    manifestWriter.println(genre + ".csv");
-                }
-            }
-            */
 
         } catch (FileNotFoundException e) {
             System.out.println("Manifest file not found: " + manifest1FilePath);
@@ -309,12 +264,11 @@ public class Driver {
         int lineCount = 0;
         int movieCount = 0;
 
-        //String movieFilePath = inputdirectoryPath+"\\"+fileName; 
+ 
         String badMoviesoutputFilePath = outputdirectoryPath+"\\" + "bad_movie_records.txt"; 
 
         File movieFile = new File(filePath);
-        //Scanner movieFileScanner = null;
-        //PrintWriter badMovieWriter = null;
+        
 
         try(Scanner movieFileScanner = new Scanner(new FileInputStream(movieFile)); 
         PrintWriter  badMovieWriter = new PrintWriter(new FileOutputStream(badMoviesoutputFilePath, true))){
@@ -442,16 +396,7 @@ public class Driver {
     }
 
 
-    //Checks if a genre has already been tracked
-
-    private static boolean isGenreTracked(String[] encounteredGenres, String genre, int genreCount) {
-        for (int i = 0; i < genreCount; i++) {
-            if (genre.equals(encounteredGenres[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
     /**
      * for all genre files loads a Movie array with records from the file, 
@@ -506,20 +451,22 @@ public class Driver {
         return "inputfiles\\part3_manifest.txt"; 
     }
 
+
+
+
+
+    /**
+     * Processes a CSV file containing VALID movie records and partitions it into an array of Movie objects.
+     *
+     * @param filePath 
+     * @return array of valid movie objects. Returns {@code null} if the file was not found or empty
+     */
     public static Movie[] partiateCSVFile(String filePath){
 
         
         String line;
         Movie[] movieRecords = new Movie[MAXNUMMOVIEINFILE];
         int count = 0;
-        
-
-        //String movieFilePath = inputdirectoryPath+"\\"+fileName; 
-        //String badMoviesoutputFilePath = outputdirectoryPath+"\\" + "bad_movie_records.txt"; 
-
-        //File movieFile = new File(filePath);
-        //Scanner movieFileScanner = null;
-        //PrintWriter badMovieWriter = null;
 
         try(Scanner movieFileScanner = new Scanner(new FileInputStream(filePath))){
 
@@ -600,61 +547,27 @@ public class Driver {
     }
 
 
-
-
-
-
-    
  
+
+
     /**
-     * Deserializes the array of Movie objects from binary files  in part3_manifest.txt.
-    
-     * @param manifest3FilePath Path to the manifest file containing the list of binary files.
-     * @return 2D array of Movie objects, each row represents a genre.
-     */
-
-    /**public static Movie[][] deserialize(String fileName){
-
-        try(Scanner )
-       
-
-        
-
-        try(FileOutputStream fileOut = new FileOutputStream(serializedFile); 
-            ObjectOutputStream out = new ObjectOutputStream(fileOut)){
-
-            out.writeObject(movies);
-
-
-        }catch(IOException e){
-            System.out.println("Error occured during the serialization of movies of genre " + genre);
-        }
-
-    }
-
-*/
-
-
-
-// deserealize each file back into movie arrays
-
-// create Movie[][] from all these arrays
-
-
-
-/**
      * Deserializes the array of Movie objects from binary files
-     * Each binary file contains a serialized array of Movie objects for a  genre.
+     * Each binary file contains a serialized array of Movie objects for a genre.
      * @param manifest3FilePath Path to the manifest file containing the list of binary files.
      * @return 2D array of Movie objects,row represents a genre.
      */
     public static Movie[][] do_part3(String manifest3FilePath) {
+
         int genreCount=countRows(manifest3FilePath);
+
         if(genreCount==0){
             return new Movie[0][0];     
-           }
-           Movie[][]all_movies=new Movie[genreCount][];
-           try(Scanner scanner=new Scanner(new File(manifest3FilePath))){
+        }
+
+        Movie[][]all_movies=new Movie[genreCount][];
+        
+        try(Scanner scanner=new Scanner(new File(manifest3FilePath))){
+
             int index=0;
 
             while(scanner.hasNextLine()){
@@ -664,18 +577,19 @@ public class Driver {
                 try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))){
 
                     all_movies[index++]=(Movie[]) in.readObject();
+
                 }catch(IOException|ClassNotFoundException e){
-                    System.out.println("Error deserializing "+fileName);
+                    System.out.println("Error deserializing "+ fileName);
                     e.printStackTrace();
                 }
             }
-           }catch(FileNotFoundException e){
+
+
+        }catch(FileNotFoundException e){
+
             System.out.println("Manifest file not found: "+ manifest3FilePath);
 
-           }
-
-
-
+        }
 
 
         return all_movies;
@@ -689,7 +603,6 @@ public class Driver {
      * @param filePath Path to the file.
      * @return The number of rows in the file.
      */
-
     private static int countRows(String filePath){
 
         int rows=0;
@@ -704,7 +617,7 @@ public class Driver {
             return rows;
 
 
-        }
+    }
 
 
 
@@ -712,8 +625,8 @@ public class Driver {
      * Displays all movies from the 2D array of Movie objects.
      * @param all_movies The 2D array of Movie objects to display.
      */
+    public static void displayAllMovies(Movie[][]all_movies){
 
-     public static void displayAllMovies(Movie[][]all_movies){
         if(all_movies==null){
             System.out.println("Empty movie");
             return;
@@ -721,7 +634,9 @@ public class Driver {
 
 
         for (int i = 0; i < all_movies.length; i++) {
+
             System.out.println("Genre " + (i+1) + ":");
+
             if (all_movies[i] == null) {
                 System.out.println("  No movies in this genre.");
                 continue;
@@ -738,7 +653,7 @@ public class Driver {
 
 
 
-     }
+        }
 
 
 
@@ -771,9 +686,6 @@ public class Driver {
      * @param all_movies The 2D array of Movie objects where each row represents a genre.
      * 
      */
-
-
-
     public static void navigateMovies(Movie[][] all_movies){
 
         if(all_movies==null||all_movies.length==0){
@@ -788,47 +700,47 @@ public class Driver {
         String choice;
 
         do{
-        System.out.println("----------------------------------------");
-        System.out.println("                Main Menu               ");
-        System.out.println("----------------------------------------");
-        System.out.println("");
-        System.out.println("s Select a movie array to navigate");
-        System.out.println("n Navigate "+ getGenre(currentGenre)+ " movies (" + (all_movies[currentGenre]!=null?all_movies[currentGenre].length:0) + " records)");
-        System.out.println("x Exit");
-        System.out.println("");
-        System.out.println("----------------------------------------");
+            System.out.println("----------------------------------------");
+            System.out.println("                Main Menu               ");
+            System.out.println("----------------------------------------");
+            System.out.println("");
+            System.out.println("s Select a movie array to navigate");
+            System.out.println("n Navigate "+ getGenre(currentGenre)+ " movies (" + (all_movies[currentGenre]!=null?all_movies[currentGenre].length:0) + " records)");
+            System.out.println("x Exit");
+            System.out.println("");
+            System.out.println("----------------------------------------");
 
-        
-        System.out.println("");
-        System.out.println("Enter your Choice:");
+            
+            System.out.println("");
+            System.out.println("Enter your Choice:");
 
-        System.out.println("");
+            System.out.println("");
 
-        
+            
 
-        choice=sc1.nextLine();
-        choice=choice.toLowerCase();
-
-
-
-        switch(choice){
-            case "s":
-            selectGenre(all_movies);
-            break;
+            choice=sc1.nextLine();
+            choice=choice.toLowerCase();
 
 
-            case"n":
-            navigateGenre(all_movies);
-            break;
 
-            case"x":
-            System.out.println("Exiting program, goodbye! ");
-            break;
+            switch(choice){
+                case "s":
+                    selectGenre(all_movies);
+                break;
 
-            default:
-            System.out.println("Invalid choice, please enter again. ");
 
-        }
+                case"n":
+                    navigateGenre(all_movies);
+                break;
+
+                case"x":
+                    System.out.println("Exiting program, goodbye! ");
+                break;
+
+                default:
+                    System.out.println("Invalid choice, please enter again. ");
+
+            }
 
         }while(!choice.equalsIgnoreCase("x"));
 
@@ -845,17 +757,22 @@ public class Driver {
      * @param all_movies The 2D array of Movie objects where each row represents a genre.
      */
     public static void selectGenre(Movie[][] all_movies) {
+
         Scanner sc4 = new Scanner(System.in);
+
         System.out.println("------------------------------");
         System.out.println("Genre Sub-Menu");
         System.out.println("------------------------------");
+
         for (int i = 0; i < genres.length; i++) {
             int movieCount = (all_movies[i] != null) ? all_movies[i].length : 0;
             System.out.println((i + 1) + " " + genres[i] + " (" + movieCount + " movies)");
         }
+
         System.out.println((genres.length + 1) + " Exit");
         System.out.println("------------------------------");
         System.out.print("Enter Your Choice: ");
+
         int choice = sc4.nextInt();
 
         // zero-based genre
@@ -876,7 +793,6 @@ public class Driver {
     *
     * @param all_movies The 2D array containing arrays of Movie objects for each genre
     */
-
     private static void navigateGenre(Movie[][] all_movies) {
         Scanner sc5 = new Scanner(System.in);
         System.out.println("Navigating " + getGenre(currentGenre) + " movies (" + (all_movies[currentGenre] != null ? all_movies[currentGenre].length : 0) + ")");
@@ -904,17 +820,20 @@ public class Driver {
     * @param currentPosition The current position in the array 
     * @param n The number of steps to move downwards the start of the array
     */
-
     private static void displayMoviesBelow(Movie[] movies, int currentPosition, int n) {
+
         int endPosition = Math.min(movies.length, currentPosition + n);
+
         for (int i = currentPosition + 1; i < endPosition; i++) {
             if (movies[i] != null) {
                 System.out.println(movies[i]);
             }
         }
+
         if (endPosition == movies.length) {
             System.out.println("EOF has been reached");
         }
+
         Position[currentGenre] = endPosition - 1;
     }
 
@@ -928,28 +847,23 @@ public class Driver {
     * @param currentPosition The current position in the array 
     * @param n The number of steps to move upwards towards the start of the array
     */
-
     private static void displayMoviesAbove(Movie[] movies, int currentPosition, int n) {
+
         int startPosition = Math.max(0, currentPosition + n); // n is negative
+
         for (int i = startPosition; i < currentPosition; i++) {
             if (movies[i] != null) {
                 System.out.println(movies[i]);
             }
         }
+
         if (startPosition == 0) {
             System.out.println("BOF has been reached");
         }
 
+    }
 
 
-
-    
-
-
-
-
-
-}
 }
 
 
