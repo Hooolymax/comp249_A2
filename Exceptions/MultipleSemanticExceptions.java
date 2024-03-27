@@ -6,7 +6,7 @@
 package exceptions;
 
 /**
- * An exception that collects multiple {@link SemanticException} instances.
+ * an exception that collects multiple {@link SemanticException} instances in an array 
  * 
  */
 public class MultipleSemanticExceptions extends SemanticException{

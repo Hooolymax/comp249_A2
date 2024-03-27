@@ -5,6 +5,9 @@
 
 package exceptions;
 
+/**
+ * Abstract exception class for handling all types of syntax errors in movie records
+ */
 public abstract class SyntaxException extends Exception{
 
     public SyntaxException(){

@@ -25,7 +25,9 @@ import exceptions.*;
 import movie.Movie;
 
 /**
- * 
+ * Processes movie catalog by partitioning valid records into genre-based files,
+ * serializing them into binary files, and deserializing for navigation. 
+ * Provides an interactive interface to display movie records.
  * 
  * @author Alisa Ignatina 40267100 and Jinghao Lai 40041316 
  * @since 2024-03-27
@@ -53,7 +55,8 @@ public class Driver {
 
 
     /**
-     * 
+     * Serves as the entry point, managing the application flow 
+     * by executing first, second and third parts
      * 
      * @param args
      */
@@ -193,7 +196,7 @@ public class Driver {
 
         return "inputfiles\\part2_manifest.txt";  // returns name of part 2 manifest file
 
-    }
+    }native
 
 
 

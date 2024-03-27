@@ -5,7 +5,9 @@
 
 package exceptions;
 
-
+/**
+ * Abstract exception class for handling all types of semantic errors in movie records
+ */
 public abstract class SemanticException extends Exception{
 
     private SemanticException[] exceptions = new SemanticException[10];
