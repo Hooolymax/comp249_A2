@@ -179,7 +179,7 @@ public class Driver {
         } 
 
 
-        createManifestFile("part2_manifest.txt", 2);
+        createManifestFile("inputfiles\\part2_manifest.txt", 2);
 
 
         
@@ -195,10 +195,10 @@ public class Driver {
    
     /**
      * creates 1st, 2nd or 3rd manifest file
-     * @param manifestFileName
+     * @param manifestFilePath
      * @param manifestNumber
      */
-    public static void createManifestFile(String manifestFileName,int manifestNumber) {
+    public static void createManifestFile(String manifestFilePath,int manifestNumber) {
 
         String suffix;
         String directoryPath;
@@ -231,7 +231,7 @@ public class Driver {
         File dir = new File(directoryPath);
         File[] files = dir.listFiles((dir1, name) -> name.endsWith(suffix));
 
-            try (FileWriter writer = new FileWriter(manifestFileName)) {
+            try (FileWriter writer = new FileWriter(manifestFilePath)) {
                 if(files!=null){
                     for(File file:files){
                         writer.write(file.getName()+"\n");

@@ -6,7 +6,6 @@
 package movie;
 
 import java.io.Serializable;
-import java.util.Optional;
 
 import exceptions.*;
 
