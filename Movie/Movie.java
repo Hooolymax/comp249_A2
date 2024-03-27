@@ -157,20 +157,6 @@ public class Movie implements Serializable {
         this.actor3 = aMovie.actor3;
     }
 
-    /**
-     * Checks if given String is an integer and converts it to integer
-     * @param str - String to be checked and converted
-     * @return string converted to int if integer, empty otherwise
-     */
-    public static Optional<Integer> toInteger(String str) {
-        try {
-            return Optional.of(Integer.parseInt(str));
-        } catch (NumberFormatException e) {
-            return Optional.empty();
-        }
-    }
-
-
 
     public int getYear() {
         return year;
@@ -425,32 +411,26 @@ public class Movie implements Serializable {
 
             throw new BadGenreException("missing genre");
 
+        } else{
 
-        }
-        else{
+            boolean isValidGenre = false;
 
-            try{
+            for (String validGenre : validGenres) {
 
-                 boolean isValidGenre = false;
-                 for (String validGenre : validGenres) {
-
-                    if (candidateGenres.trim().equalsIgnoreCase(validGenre)){
-                        isValidGenre = true;
-                        break;
-                    }
-
+                if (candidateGenres.trim().equalsIgnoreCase(validGenre)){
+                    isValidGenre = true;
+                    break;
                 }
 
-                    if (!isValidGenre) {
-                        throw new BadGenreException("invalid genre:" + candidateGenres);
-                    }
-
-                
-
-                return candidateGenres;
-            }catch (SemanticException e){
-                throw new BadGenreException("Invalid genre");
             }
+
+            if (!isValidGenre) {
+                throw new BadGenreException("invalid genre:" + candidateGenres);
+            }
+
+            
+            return candidateGenres;
+            
         }
 
     }
