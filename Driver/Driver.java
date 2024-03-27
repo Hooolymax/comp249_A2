@@ -75,7 +75,7 @@ public class Driver {
         // part 3’s manifest file
         String part3_manifest = do_part2(part2_manifest); // serialize
 
-        do_part3(part3_manifest); // deserialize and navigate
+       // do_part3(part3_manifest); //  //deserialize and navigate//
 
 
         System.out.println("Goodbuy!");
@@ -598,7 +598,8 @@ public class Driver {
      * @param manifest3FilePath
      * @return a 2D object of type Movie[][]
      */
-    public static Movie[][] do_part3(String manifest3FilePath) {
+    
+   /* public static Movie[][] do_part3(String manifest3FilePath) {
 
         Movie[][] allMovies = null;
 
@@ -633,7 +634,7 @@ public class Driver {
                         System.out.println(movies[i].toString());
 
                     }
-                    */
+                    
 
                 }
 
@@ -650,7 +651,7 @@ public class Driver {
 
         
     }
-
+*/
 
 
 
