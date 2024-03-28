@@ -261,7 +261,7 @@ public class Movie implements Serializable {
 
             try{
                 int year = Integer.parseInt(candidateYear);
-                if (year >= 1990 && year <= 2024){
+                if (year >= 1990 && year <= 1999){
                     return year;
                 } else {
                     throw new BadYearException("invalid year");
@@ -303,23 +303,14 @@ public class Movie implements Serializable {
 
             try{
 
-                // trying to parse the score as an integer to catch the exception
-                try{
-                    Integer.parseInt(candidateScore);
-                    // throw an exception if passed
+                double score = Double.parseDouble(candidateScore);
+
+                if (score > 0 && score <=10){
+                    return score;
+                } else {
                     throw new BadScoreException("invalid score");
-        
-                } catch (NumberFormatException e) {
-                    
-                    // Expected
-                    
-                    double score = Double.parseDouble(candidateScore);
-                    if (score > 0){
-                        return score;
-                    } else {
-                        throw new BadScoreException("invalid score");
-                    }
                 }
+                
             } catch (NumberFormatException e) {
                 throw new BadScoreException("invalid score");
             }

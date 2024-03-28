@@ -1,4 +1,6 @@
 Movie [year=1996, title=The Hunchback of Notre Dame, duration=91, genres=Animation, rating=G, score=6.9, director=Gary Trousdale, actor1=Demi Moore, actor2=Jason Alexander, actor3=Bill Fagerbakke]
+Movie [year=1997, title=I Married a Strange Person!, duration=75, genres=Animation, rating=R, score=7.0, director=Bill Plympton, actor1=Charis Michelsen, actor2=Bill Martone, actor3=Richard Spore]
 Movie [year=1997, title="Cats Don,t Dance", duration=75, genres=Animation, rating=G, score=6.9, director=Mark Dindal, actor1=George Kennedy, actor2=Frank Welker, actor3=Hal Holbrook]
+Movie [year=1999, title=Doug's 1st Movie, duration=77, genres=Animation, rating=G, score=5.0, director=Maurice Joyce, actor1=Frank Welker, actor2=Constance Shulman, actor3=Alice Playten]
 Movie [year=1999, title=South Park: Bigger Longer & Uncut, duration=81, genres=Animation, rating=R, score=7.8, director=Trey Parker, actor1=Minnie Driver, actor2=Eric Idle, actor3=Trey Parker]
 Movie [year=1999, title=Fantasia 2000, duration=74, genres=Animation, rating=G, score=7.3, director=James Algar, actor1=Quincy Jones, actor2=Penn Jillette, actor3=Russi Taylor]

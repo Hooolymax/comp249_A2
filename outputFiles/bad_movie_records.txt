@@ -1,117 +1,48 @@
-syntax error missing quotes [2004,"I, Robot ,115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 1
-syntax error excess fields [2004, I, Robot ,115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 2
-syntax error missing fields [2004,"I, Robot ", Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 3
-semantic error invalid year [-2004,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 4
-semantic error invalid year [MMIV,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 5
-semantic error missing year [,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 6
-semantic error Invalid duration [2004,"I, Robot ",444,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 7
-semantic error Invalid duration [2004,"I, Robot ",1 hour,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 8
-semantic error missing duration [2004,"I, Robot ", ,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 9
-semantic error invalid genre:Aktion [2004,"I, Robot ",115,Aktion,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 10
-semantic error missing rating [2004,"I, Robot ",115,Action, ,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 11
-multiple semantic errors invalid year, Invalid Rating [1 2004,"I, Robot ",115,Action,PG-31,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 12
-semantic error missing rating [2004,"I, Robot ",115,Action, ,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 13
-multiple semantic errors invalid year, invalid score [1 2004,"I, Robot ",115,Action,PG-13,71,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 14
-semantic error invalid score [2004,"I, Robot ",115,Action,PG-13,ten,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 15
-semantic error missing score [2004,"I, Robot ",115,Action,PG-13, ,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 16
-multiple semantic errors invalid year, missing actor [1 2004,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith, ,Chi McBride] inputfiles\Movies1990.csv line 17
-semantic error missing title [2004, ,115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 18
-multiple semantic errors missing title, invalid genre:komedy, missing rating [2004, ,115, komedy, ,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 19
-multiple semantic errors invalid year, missing actor [1 ,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith, ,Chi McBride] inputfiles\Movies1990.csv line 20
-semantic error missing year [,"I, Robot ",115,Action,PG-13,7.1,Alex Proyas,Will Smith,Bruce Greenwood,Chi McBride] inputfiles\Movies1990.csv line 21
-syntax error excess fields [1990,"Tremors",96,Comedy,PG-13,7.1,Ron Underwood,Reba McEntire,Ariana Richards,Michael Gross,] inputfiles\Movies1990.csv line 22
-syntax error excess fields [1990,"The Adventures of Ford Fairlane",104,Action,R,6.3,Renny Harlin,Lauren Holly,Gilbert Gottfried,David Patrick Kelly,] inputfiles\Movies1990.csv line 23
-syntax error excess fields [1990,Child's Play 2,72,Fantasy,R,5.7,John Lafia,Jenny Agutter,Beth Grant,Greg Germann,] inputfiles\Movies1990.csv line 24
-syntax error excess fields [1990,Predator 2,103,"Action",R,6.2,Stephen Hopkins,Adam Baldwin,Robert Davi,Kevin Peter Hall,] inputfiles\Movies1990.csv line 25
-syntax error excess fields [1990,Gremlins 2: The New Batch,106,Comedy,PG-13,6.3,Joe Dante,Christopher Lee,Robert Picardo,Phoebe Cates,] inputfiles\Movies1990.csv line 26
-syntax error excess fields [1990,Goodfellas,146,Biography,R,8.7,Martin Scorsese,Robert De Niro,Mike Starr,Paul Sorvino,] inputfiles\Movies1990.csv line 27
-syntax error excess fields [1990,Arachnophobia,103,Comedy,PG-13,6.3,Frank Marshall,Julian Sands,Peter Jason,Brian McNamara,] inputfiles\Movies1990.csv line 28
-syntax error excess fields [1990,Edward Scissorhands,105,Fantasy,PG-13,7.9,Tim Burton,Johnny Depp,Dianne Wiest,Conchata Ferrell,] inputfiles\Movies1990.csv line 29
-syntax error excess fields [1990,Flatliners,115,Drama,R,6.6,Joel Schumacher,Julia Roberts,Oliver Platt,Hope Davis,] inputfiles\Movies1990.csv line 30
-syntax error excess fields [1990,The Godfather: Part III,170,Crime,R,7.6,Francis Ford Coppola,Al Pacino,Joe Mantegna,Bridget Fonda,] inputfiles\Movies1990.csv line 31
-syntax error excess fields [1990,Days of Thunder,107,Action,PG-13,5.9,Tony Scott,Tom Cruise,Robert Duvall,Randy Quaid,] inputfiles\Movies1990.csv line 32
-syntax error excess fields [1990,Back to the Future Part III,118,Adventure,PG,7.4,Robert Zemeckis,Lea Thompson,Jeffrey Weissman,Thomas F. Wilson,] inputfiles\Movies1990.csv line 33
-syntax error excess fields [1990,Kindergarten Cop,111,Action,PG-13,6,Ivan Reitman,Richard Tyson,Cathy Moriarty,Penelope Ann Miller,] inputfiles\Movies1990.csv line 34
-syntax error excess fields [1990,Dick Tracy,105,Action,PG,"6.1",Warren Beatty,Charlie Korsmo,Warren Beatty,Seymour Cassel,] inputfiles\Movies1990.csv line 35
-syntax error excess fields [1990,Die Hard 2,124,Action,R,7.1,Renny Harlin,Bruce Willis,John Amos,Franco Nero,] inputfiles\Movies1990.csv line 36
-syntax error excess fields [1990,Total Recall,113,Action,R,7.5,Paul Verhoeven,Ronny Cox,Rachel Ticotin,Marshall Bell,actor 4?] inputfiles\Movies1990.csv line 37
-syntax error excess fields [1990,Total Recall,113,Action,R,7.5,Paul Verhoeven,Ronny Cox,Rachel Ticotin,Marshall Bell,] inputfiles\Movies1990.csv line 38
-syntax error excess fields [1990,The Hunt for Red October,135,Action,PG,7.6,John McTiernan,Scott Glenn,Jeffrey Jones,Courtney B. Vance,] inputfiles\Movies1990.csv line 39
-syntax error excess fields [1990,Pretty Woman,125,Comedy,R,6.9,Garry Marshall,Julia Roberts,Hector Elizondo,Jason Alexander,] inputfiles\Movies1990.csv line 40
-syntax error excess fields [1990,Dances with Wolves,236,Adventure,PG-13,8,Kevin Costner,Mary McDonnell,Michael Spears,Maury Chaykin,] inputfiles\Movies1990.csv line 41
-syntax error excess fields [1990,Ghost,127,Drama,PG-13,7,Jerry Zucker,Demi Moore,Tony Goldwyn,Phil Leeds,] inputfiles\Movies1990.csv line 42
-syntax error excess fields [1990,Home Alone,103,Comedy,PG,7.5,Chris Columbus,Macaulay Culkin,Devin Ratray,Catherine O'Hara,] inputfiles\Movies1990.csv line 43
-semantic error invalid score [1991,Showdown in Little Tokyo,79,Action,R,6,Mark L. Lester,Cary-Hiroyuki Tagawa,Tia Carrere,Vernee Watson] inputfiles\Movies1991.csv line 2
-semantic error invalid score [1991,Harley Davidson and the Marlboro Man,98,Action,R,6,Simon Wincer,Vanessa Williams,Tia Carrere,Don Johnson] inputfiles\Movies1991.csv line 6
+syntax error excess fields [1990,"Tremors",96,Comedy,PG-13,7.1,Ron Underwood,Reba McEntire,Ariana Richards,Michael Gross,] inputfiles\Movies1990.csv line 0
+syntax error excess fields [1990,"The Adventures of Ford Fairlane",104,Action,R,6.3,Renny Harlin,Lauren Holly,Gilbert Gottfried,David Patrick Kelly,] inputfiles\Movies1990.csv line 1
+syntax error excess fields [1990,Child's Play 2,72,Fantasy,R,5.7,John Lafia,Jenny Agutter,Beth Grant,Greg Germann,] inputfiles\Movies1990.csv line 2
+syntax error excess fields [1990,Predator 2,103,"Action",R,6.2,Stephen Hopkins,Adam Baldwin,Robert Davi,Kevin Peter Hall,] inputfiles\Movies1990.csv line 3
+syntax error excess fields [1990,Gremlins 2: The New Batch,106,Comedy,PG-13,6.3,Joe Dante,Christopher Lee,Robert Picardo,Phoebe Cates,] inputfiles\Movies1990.csv line 4
+syntax error excess fields [1990,Goodfellas,146,Biography,R,8.7,Martin Scorsese,Robert De Niro,Mike Starr,Paul Sorvino,] inputfiles\Movies1990.csv line 5
+syntax error excess fields [1990,Arachnophobia,103,Comedy,PG-13,6.3,Frank Marshall,Julian Sands,Peter Jason,Brian McNamara,] inputfiles\Movies1990.csv line 6
+syntax error excess fields [1990,Edward Scissorhands,105,Fantasy,PG-13,7.9,Tim Burton,Johnny Depp,Dianne Wiest,Conchata Ferrell,] inputfiles\Movies1990.csv line 7
+syntax error excess fields [1990,Flatliners,115,Drama,R,6.6,Joel Schumacher,Julia Roberts,Oliver Platt,Hope Davis,] inputfiles\Movies1990.csv line 8
+syntax error excess fields [1990,The Godfather: Part III,170,Crime,R,7.6,Francis Ford Coppola,Al Pacino,Joe Mantegna,Bridget Fonda,] inputfiles\Movies1990.csv line 9
+syntax error excess fields [1990,Days of Thunder,107,Action,PG-13,5.9,Tony Scott,Tom Cruise,Robert Duvall,Randy Quaid,] inputfiles\Movies1990.csv line 10
+syntax error excess fields [1990,Back to the Future Part III,118,Adventure,PG,7.4,Robert Zemeckis,Lea Thompson,Jeffrey Weissman,Thomas F. Wilson,] inputfiles\Movies1990.csv line 11
+syntax error excess fields [1990,Kindergarten Cop,111,Action,PG-13,6,Ivan Reitman,Richard Tyson,Cathy Moriarty,Penelope Ann Miller,] inputfiles\Movies1990.csv line 12
+syntax error excess fields [1990,Dick Tracy,105,Action,PG,"6.1",Warren Beatty,Charlie Korsmo,Warren Beatty,Seymour Cassel,] inputfiles\Movies1990.csv line 13
+syntax error excess fields [1990,Die Hard 2,124,Action,R,7.1,Renny Harlin,Bruce Willis,John Amos,Franco Nero,] inputfiles\Movies1990.csv line 14
+syntax error excess fields [1990,Total Recall,113,Action,R,7.5,Paul Verhoeven,Ronny Cox,Rachel Ticotin,Marshall Bell,actor 4?] inputfiles\Movies1990.csv line 15
+syntax error excess fields [1990,Total Recall,113,Action,R,7.5,Paul Verhoeven,Ronny Cox,Rachel Ticotin,Marshall Bell,] inputfiles\Movies1990.csv line 16
+syntax error excess fields [1990,The Hunt for Red October,135,Action,PG,7.6,John McTiernan,Scott Glenn,Jeffrey Jones,Courtney B. Vance,] inputfiles\Movies1990.csv line 17
+syntax error excess fields [1990,Pretty Woman,125,Comedy,R,6.9,Garry Marshall,Julia Roberts,Hector Elizondo,Jason Alexander,] inputfiles\Movies1990.csv line 18
+syntax error excess fields [1990,Dances with Wolves,236,Adventure,PG-13,8,Kevin Costner,Mary McDonnell,Michael Spears,Maury Chaykin,] inputfiles\Movies1990.csv line 19
+syntax error excess fields [1990,Ghost,127,Drama,PG-13,7,Jerry Zucker,Demi Moore,Tony Goldwyn,Phil Leeds,] inputfiles\Movies1990.csv line 20
+syntax error excess fields [1990,Home Alone,103,Comedy,PG,7.5,Chris Columbus,Macaulay Culkin,Devin Ratray,Catherine O'Hara,] inputfiles\Movies1990.csv line 21
 semantic error invalid year [2991,Hudson Hawk,100,Action,R,5.7,Michael Lehmann,Bruce Willis,James Coburn,Richard E. Grant] inputfiles\Movies1991.csv line 9
 semantic error Invalid Rating [1991,Bill & Ted's Bogus Journey,93,Adventure,PJ,6.2,Peter Hewitt,Keanu Reeves,George Carlin,Alex Winter] inputfiles\Movies1991.csv line 15
-semantic error invalid score [1991,Teenage Mutant Ninja Turtles II: The Secret of the Ooze,88,Action,PG,6,Michael Pressman,Kevin Nash,Paige Turco,Ernie Reyes Jr.] inputfiles\Movies1991.csv line 21
 semantic error Invalid duration [1991,Hook,333,Adventure,PG,6.7,Steven Spielberg,Robin Williams,Julia Roberts,Bob Hoskins] inputfiles\Movies1991.csv line 25
-semantic error invalid score [1992,Raising Cain,91,Crime,R,6,Brian De Palma,Steven Bauer,Gabrielle Carteris,Gregg Henry] inputfiles\Movies1992.csv line 7
-semantic error invalid score [1992,Medicine Man,106,Adventure,PG-13,6,John McTiernan,Lorraine Bracco,Jose Wilker,Sean Connery] inputfiles\Movies1992.csv line 10
 semantic error invalid year [l992,Unforgiven,131,Drama,R,8.3,Clint Eastwood,Clint Eastwood,Morgan Freeman,Frances Fisher] inputfiles\Movies1992.csv line 20
-semantic error invalid score [1992,Wayne's World,94,Comedy,PG-13,7,Penelope Spheeris,Tia Carrere,Lara Flynn Boyle,Kurt Fuller] inputfiles\Movies1992.csv line 22
-multiple semantic errors invalid genre:Aktion, invalid score [1992,Batman Returns,126,Aktion,PG-13,7,Tim Burton,Michael Gough,Vincent Schiavelli,Andrew Bryniarski] inputfiles\Movies1992.csv line 26
+semantic error invalid genre:Aktion [1992,Batman Returns,126,Aktion,PG-13,7,Tim Burton,Michael Gough,Vincent Schiavelli,Andrew Bryniarski] inputfiles\Movies1992.csv line 26
 semantic error invalid score [1992,Aladdin,90,Adventure,G,80,Ron Clements,Robin Williams,Frank Welker,Scott Weinger] inputfiles\Movies1992.csv line 28
-multiple semantic errors Invalid duration, invalid score [1993,"Blood In, Blood Out",330,Crime,R,8,Taylor Hackford,Delroy Lindo,Jesse Borrego,Raymond Cruz] inputfiles\Movies1993.csv line 6
+semantic error Invalid duration [1993,"Blood In, Blood Out",330,Crime,R,8,Taylor Hackford,Delroy Lindo,Jesse Borrego,Raymond Cruz] inputfiles\Movies1993.csv line 6
 semantic error Invalid Rating [1993,Dazed and Confused,102,Comedy,RRR,7.7,Richard Linklater,Milla Jovovich,Adam Goldberg,Cole Hauser] inputfiles\Movies1993.csv line 7
-semantic error invalid score [1993,True Romance,121,Action,R,8,Tony Scott,Brad Pitt,Gary Oldman,Michael Rapaport] inputfiles\Movies1993.csv line 11
 semantic error missing director [1993,Hocus Pocus,96,Comedy,PG,6.7,,Vinessa Shaw,Omri Katz,Larry Bagby] inputfiles\Movies1993.csv line 21
 semantic error missing actor [1994,There Goes My Baby,99,Comedy,R,6.4,Floyd Mutrux,Ricky Schroder,,Seymour Cassel] inputfiles\Movies1994.csv line 0
 semantic error missing score [1994,Wyatt Earp,212,Adventure,PG-13,,Lawrence Kasdan,Dennis Quaid,Catherine O'Hara,Isabella Rossellini] inputfiles\Movies1994.csv line 15
-semantic error invalid score [1994,The Shadow,93,Action,PG-13,6,Russell Mulcahy,Jonathan Winters,Peter Boyle,John Kapelos] inputfiles\Movies1994.csv line 18
 semantic error missing duration [1994,Richie Rich,,Comedy,PG,5.2,Donald Petrie,Macaulay Culkin,John Larroquette,Jonathan Hyde] inputfiles\Movies1994.csv line 19
-semantic error invalid score [1994,Disclosure,128,Drama,R,6,Barry Levinson,Demi Moore,Dylan Baker,Roma Maffia] inputfiles\Movies1994.csv line 30
-semantic error invalid score [1995,Congo,109,Action,PG-13,5,Frank Marshall,Dylan Walsh,Joe Don Baker,Grant Heslov] inputfiles\Movies1995.csv line 45
-semantic error invalid score [1995,Casper,100,Comedy,PG,6,Brad Silberling,Eric Idle,Fred Rogers,Cathy Moriarty] inputfiles\Movies1995.csv line 51
 multiple semantic errors invalid genre:Krime, missing score [1996,Bound,109,Krime,R,,Lana Wachowski,Christopher Meloni,Kevin Michael Richardson,Peter Spellos] inputfiles\Movies1996.csv line 8
-semantic error invalid score [1996,Kama Sutra: A Tale of Love,109,Crime,R,6,Mira Nair,Indira Varma,Sarita Choudhury,Rekha] inputfiles\Movies1996.csv line 9
 multiple semantic errors invalid year, missing rating [l996,Bogus,110,Comedy,,5.3,Norman Jewison,Haley Joel Osment,Nancy Travis,Andrea Martin] inputfiles\Movies1996.csv line 10
-semantic error invalid score [1996,Girl 6,108,Comedy,R,5,Spike Lee,Michael Imperioli,Debi Mazar,Gretchen Mol] inputfiles\Movies1996.csv line 12
 multiple semantic errors invalid year, missing score [-1996,The Fan,116,Action,R,,Tony Scott,Robert De Niro,Kurt Fuller,Ellen Barkin] inputfiles\Movies1996.csv line 27
-semantic error invalid score [1996,Multiplicity,117,Comedy,PG-13,6,Harold Ramis,John de Lancie,Brian Doyle-Murray,Obba Babatunde] inputfiles\Movies1996.csv line 29
-semantic error invalid score [1996,Sling Blade,148,Drama,R,8,Billy Bob Thornton,Robert Duvall,Dwight Yoakam,J.T. Walsh] inputfiles\Movies1996.csv line 34
 semantic error Invalid duration [1996,Striptease,1170,Comedy,R,4.3,Andrew Bergman,Demi Moore,Rumer Willis,Paul Guilfoyle] inputfiles\Movies1996.csv line 44
-semantic error invalid score [1996,Happy Gilmore,92,Comedy,PG-13,7,Dennis Dugan,Adam Sandler,Kevin Nealon,Frances Bay] inputfiles\Movies1996.csv line 51
-semantic error invalid score [1996,The Cable Guy,96,Comedy,PG-13,6,Ben Stiller,Matthew Broderick,Janeane Garofalo,Andy Dick] inputfiles\Movies1996.csv line 62
 multiple semantic errors invalid year, Invalid duration, invalid score [2996,Broken Arrow,900,Action,R,60,John Woo,Delroy Lindo,Samantha Mathis,Bob Gunton] inputfiles\Movies1996.csv line 66
-semantic error invalid score [1997,I Married a Strange Person!,75,Animation,R,7,Bill Plympton,Charis Michelsen,Bill Martone,Richard Spore] inputfiles\Movies1997.csv line 3
-semantic error invalid score [1997,Dream with the Fishes,97,Comedy,R,7,Finn Taylor,David Arquette,Cathy Moriarty,Kathryn Erbe] inputfiles\Movies1997.csv line 5
-semantic error invalid score [1997,Trekkies,86,Documentary,PG,7,Roger Nygard,Walter Koenig,DeForest Kelley,James Doohan] inputfiles\Movies1997.csv line 8
-semantic error invalid score [1997,Kundun,134,Biography,PG-13,7,Martin Scorsese,Tenzin Thuthob Tsarong,Tulku Jamyang Kunga Tenzin,Tencho Gyalpo] inputfiles\Movies1997.csv line 16
 semantic error missing actor [1997,Chasing Amy,113,Comedy,R,7.3,Kevin Smith,Matt Damon,Ethan Suplee,] inputfiles\Movies1997.csv line 26
-semantic error invalid score [1997,The Postman,177,Action,R,6,Kevin Costner,Olivia Williams,Brian Anthony Wilson,Larenz Tate] inputfiles\Movies1997.csv line 31
-semantic error invalid score [1997,Seven Years in Tibet,136,Adventure,PG-13,7,Jean-Jacques Annaud,Brad Pitt,Mako,Victor Wong] inputfiles\Movies1997.csv line 39
-semantic error invalid score [1997,Austin Powers: International Man of Mystery,68,Comedy,PG-13,7,Jay Roach,Will Ferrell,Charles Napier,Robert Wagner] inputfiles\Movies1997.csv line 58
-semantic error invalid score [1998,Zero Effect,116,Comedy,R,7,Jake Kasdan,Kim Dickens,Ryan O'Neal,Angela Featherstone] inputfiles\Movies1998.csv line 9
-semantic error invalid score [1998,The Newton Boys,123,Action,PG-13,6,Richard Linklater,Matthew McConaughey,Lew Temple,Dwight Yoakam] inputfiles\Movies1998.csv line 20
-semantic error invalid score [1998,Home Fries,91,Comedy,PG-13,5,Dean Parisot,Catherine O'Hara,Jake Busey,Shelley Duvall] inputfiles\Movies1998.csv line 22
-semantic error invalid score [1998,Deep Rising,106,Action,R,6,Stephen Sommers,Djimon Hounsou,Jason Flemyng,Wes Studi] inputfiles\Movies1998.csv line 24
-semantic error invalid score [1998,Dead Man on Campus,96,Comedy,R,6,Alan Cohn,Alyson Hannigan,Linda Cardellini,Poppy Montgomery] inputfiles\Movies1998.csv line 27
-semantic error invalid score [1998,One True Thing,127,Drama,R,7,Carl Franklin,Meryl Streep,William Hurt,Tom Everett Scott] inputfiles\Movies1998.csv line 41
-semantic error invalid score [1998,The Object of My Affection,111,Comedy,R,6,Nicholas Hytner,Liam Aiken,Tim Daly,Kali Rocha] inputfiles\Movies1998.csv line 45
-semantic error invalid score [1998,Sphere,134,Drama,PG-13,6,Barry Levinson,Peter Coyote,James Pickens Jr.,Huey Lewis] inputfiles\Movies1998.csv line 51
-semantic error invalid score [1998,Out of Sight,123,Crime,R,7,Steven Soderbergh,Don Cheadle,Albert Brooks,Keith Hudson] inputfiles\Movies1998.csv line 52
-semantic error invalid score [1998,What Dreams May Come,113,Drama,PG-13,7,Vincent Ward,Robin Williams,Annabella Sciorra,Rosalind Chao] inputfiles\Movies1998.csv line 62
-semantic error invalid score [1998,Ever After: A Cinderella Story,121,Comedy,PG-13,7,Andy Tennant,Anjelica Huston,Dougray Scott,Jeanne Moreau] inputfiles\Movies1998.csv line 67
-semantic error invalid score [1998,The X Files,121,Drama,PG-13,7,Rob Bowman,Martin Landau,Mitch Pileggi,Jeffrey DeMunn] inputfiles\Movies1998.csv line 73
-semantic error invalid score [1998,The Prince of Egypt,99,Adventure,PG,7,Brenda Chapman,Martin Short,Aria Noelle Curzon,Eden Riegel] inputfiles\Movies1998.csv line 79
-semantic error invalid score [1999,Jesus' Son,107,Drama,R,7,Alison Maclean,Billy Crudup,Samantha Morton,Mark Webber] inputfiles\Movies1999.csv line 10
 multiple semantic errors invalid genre:Komedy, missing actor [1999,Crazy in Alabama,111,Komedy,PG-13,6.3,Antonio Banderas,Meat Loaf,,Noah Emmerich] inputfiles\Movies1999.csv line 12
 multiple semantic errors invalid year, missing duration, missing genre [l999,A Dog of Flanders,,,PG,6.3,Kevin Brodie,Bruce McGill,Cheryl Ladd,Jack Warden] inputfiles\Movies1999.csv line 15
-semantic error invalid score [1999,Light It Up,99,Drama,R,6,Craig Bolotin,Rosario Dawson,Vanessa Williams,Robert Ri'chard] inputfiles\Movies1999.csv line 28
 multiple semantic errors invalid year, Invalid duration, missing actor, missing actor [2999,Foolish,384,Comedy,R,4.3,Dave Meyers,,Clifton Powell,Marla Gibbs] inputfiles\Movies1999.csv line 29
-semantic error invalid score [1999,Pushing Tin,124,Comedy,R,6,Mike Newell,Angelina Jolie Pitt,Kurt Fuller,Jake Weber] inputfiles\Movies1999.csv line 32
 semantic error invalid genre:Druma [1999,Snow Falling on Cedars,127,Druma,PG-13,6.8,Scott Hicks,Rick Yune,Reeve Carney,Daniel von Bargen] inputfiles\Movies1999.csv line 51
-semantic error invalid score [1999,The Corruptor,110,Action,R,6,James Foley,Byron Mann,Paul Ben-Victor,Kim Chan] inputfiles\Movies1999.csv line 53
-semantic error invalid score [1999,Doug's 1st Movie,77,Animation,G,5,Maurice Joyce,Frank Welker,Constance Shulman,Alice Playten] inputfiles\Movies1999.csv line 61
-semantic error invalid score [1999,Stir of Echoes,99,Horror,R,7,David Koepp,Illeana Douglas,Kathryn Erbe,Lusia Strus] inputfiles\Movies1999.csv line 62
-semantic error invalid score [1999,Magnolia,188,Drama,R,8,Paul Thomas Anderson,Patton Oswalt,Neil Flynn,Jim Meskimen] inputfiles\Movies1999.csv line 65
-semantic error invalid score [1999,The Iron Giant,90,Action,PG,8,Brad Bird,Vin Diesel,Harry Connick Jr.,M. Emmet Walsh] inputfiles\Movies1999.csv line 67
-semantic error invalid score [1999,Mystery Men,121,Action,PG-13,6,Kinka Usher,Janeane Garofalo,Wes Studi,Eddie Izzard] inputfiles\Movies1999.csv line 76
-semantic error invalid score [1999,Superstar,81,Comedy,PG-13,5,Bruce McCulloch,Will Ferrell,Elaine Hendrix,Molly Shannon] inputfiles\Movies1999.csv line 77
 semantic error Invalid Rating [1999,Random Hearts,133,Drama,RRR,5.1,Sydney Pollack,Harrison Ford,Kristin Scott Thomas,Bill Cobbs] inputfiles\Movies1999.csv line 79
 multiple semantic errors invalid year, missing rating [-1999,The Bone Collector,118,Crime,,6.7,Phillip Noyce,Denzel Washington,Angelina Jolie Pitt,Leland Orser] inputfiles\Movies1999.csv line 102
 semantic error invalid genre:Krime [1999,The Thomas Crown Affair,113,Krime,R,6.8,John McTiernan,Mark Margolis,Faye Dunaway,Denis Leary] inputfiles\Movies1999.csv line 105
 semantic error missing title [1999,,102,Adventure,PG,7.3,Dean Parisot,Alan Rickman,Enrico Colantoni,Robin Sachs] inputfiles\Movies1999.csv line 106
-semantic error invalid score [1999,American Pie,95,Comedy,R,7,Paul Weitz,Alyson Hannigan,Shannon Elizabeth,Natasha Lyonne] inputfiles\Movies1999.csv line 114
