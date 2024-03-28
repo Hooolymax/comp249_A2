@@ -438,10 +438,8 @@ public class Driver {
 
 
 
-                if (moviesInFile != null){
-                    // serialize them and create genre.ser
-                    serialize(moviesInFile, genreOfFile);
-                }
+                // serialize them and create genre.ser
+                serialize(moviesInFile, genreOfFile);
 
             }
         
