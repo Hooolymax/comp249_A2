@@ -196,19 +196,15 @@ public class Driver {
 
         return "inputfiles\\part2_manifest.txt";  // returns name of part 2 manifest file
 
-    }native
+    }
 
 
-
-
-
-   
     /**
      * creates 1st, 2nd or 3rd manifest file
      * @param manifestFilePath
      * @param manifestNumber
      */
-    public static void createManifestFile(String manifestFilePath,int manifestNumber) {
+    public static void createManifestFile (String manifestFilePath, int manifestNumber) {
 
         String suffix;
         String directoryPath;
@@ -257,6 +253,10 @@ public class Driver {
 
 
 
+    
+
+
+   
     
 
     /**
