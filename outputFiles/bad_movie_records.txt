@@ -1,6 +1,5 @@
-syntax error excess fields [1990,"Tremors",96,Comedy,PG-13,7.1,Ron Underwood,Reba McEntire,Ariana Richards,Michael Gross,] inputfiles\Movies1990.csv line 0
-syntax error excess fields [1990,"The Adventures of Ford Fairlane",104,Action,R,6.3,Renny Harlin,Lauren Holly,Gilbert Gottfried,David Patrick Kelly,] inputfiles\Movies1990.csv line 1
-syntax error excess fields [1990,Child's Play 2,72,Fantasy,R,5.7,John Lafia,Jenny Agutter,Beth Grant,Greg Germann,] inputfiles\Movies1990.csv line 2
+syntax error missing fields [1990,"Tremors",96,Comedy,PG-13,7.1,Ron Underwood,Reba McEntire,Ariana Richards] inputfiles\Movies1990.csv line 0
+syntax error missing quotes [1990,"The Adventures of Ford Fairlane,104,Action,R,6.3,Renny Harlin,Lauren Holly,Gilbert Gottfried,David Patrick Kelly] inputfiles\Movies1990.csv line 1
 syntax error excess fields [1990,Predator 2,103,"Action",R,6.2,Stephen Hopkins,Adam Baldwin,Robert Davi,Kevin Peter Hall,] inputfiles\Movies1990.csv line 3
 syntax error excess fields [1990,Gremlins 2: The New Batch,106,Comedy,PG-13,6.3,Joe Dante,Christopher Lee,Robert Picardo,Phoebe Cates,] inputfiles\Movies1990.csv line 4
 syntax error excess fields [1990,Goodfellas,146,Biography,R,8.7,Martin Scorsese,Robert De Niro,Mike Starr,Paul Sorvino,] inputfiles\Movies1990.csv line 5
